@@ -31,15 +31,15 @@ import Palette
 manifest : Manifest.Config Pages.PathKey
 manifest =
     { backgroundColor = Just Color.white
-    , categories = [ Pages.Manifest.Category.education ]
+    , categories = [ Pages.Manifest.Category.social, Pages.Manifest.Category.business ]
     , displayMode = Manifest.Standalone
     , orientation = Manifest.Portrait
-    , description = "elm-pages-starter - A statically typed site generator."
+    , description = "Brian Ginsburg's Blog"
     , iarcRatingId = Nothing
-    , name = "elm-pages-starter"
+    , name = "Brian Ginsburg"
     , themeColor = Just Color.white
     , startUrl = pages.index
-    , shortName = Just "elm-pages-starter"
+    , shortName = Just "Brian Ginsburg"
     , sourceIcon = images.iconPng
     }
 

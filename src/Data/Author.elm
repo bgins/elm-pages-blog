@@ -19,7 +19,7 @@ all : List Author
 all =
     [ { name = "Brian Ginsburg"
       , avatar = Pages.images.author.bg
-      , bio = "Elm developer and educator. Founder of Incremental Elm Consulting."
+      , bio = "Software developer and educator at Kinetic Technology Solutions."
       }
     ]
 
