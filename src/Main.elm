@@ -291,10 +291,10 @@ head metadata =
         Metadata.Page meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "elm-pages-starter"
+                , siteName = "Brian Ginsburg's Blog"
                 , image =
                     { url = images.iconPng
-                    , alt = "elm-pages logo"
+                    , alt = "BG logo"
                     , dimensions = Nothing
                     , mimeType = Nothing
                     }
@@ -307,7 +307,7 @@ head metadata =
         Metadata.Article meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "elm-pages starter"
+                , siteName = "Brian Ginsburg's Blog"
                 , image =
                     { url = meta.image
                     , alt = meta.description
@@ -344,16 +344,16 @@ head metadata =
             in
             Seo.summary
                 { canonicalUrlOverride = Nothing
-                , siteName = "elm-pages-starter"
+                , siteName = "Brian Ginsburg's Blog"
                 , image =
                     { url = meta.avatar
-                    , alt = meta.name ++ "'s elm-pages articles."
+                    , alt = meta.name ++ "'s articles."
                     , dimensions = Nothing
                     , mimeType = Nothing
                     }
                 , description = meta.bio
                 , locale = Nothing
-                , title = meta.name ++ "'s elm-pages articles."
+                , title = meta.name ++ "'s articles."
                 }
                 |> Seo.profile
                     { firstName = firstName
@@ -364,28 +364,28 @@ head metadata =
         Metadata.BlogIndex ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "elm-pages"
+                , siteName = "Brian Ginsburg's Blog"
                 , image =
                     { url = images.iconPng
-                    , alt = "elm-pages logo"
+                    , alt = "BG logo"
                     , dimensions = Nothing
                     , mimeType = Nothing
                     }
                 , description = siteTagline
                 , locale = Nothing
-                , title = "elm-pages blog"
+                , title = "blog"
                 }
                 |> Seo.website
 
 
 canonicalSiteUrl : String
 canonicalSiteUrl =
-    "https://elm-pages-starter.netlify.com/"
+    "https://brianginsburg.com/"
 
 
 siteTagline : String
 siteTagline =
-    "Starter blog for elm-pages"
+    "A programming and music blog"
 
 
 publishedDateView metadata =
