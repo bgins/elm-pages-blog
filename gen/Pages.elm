@@ -75,49 +75,80 @@ application config =
 
 allPages : List (PagePath PathKey)
 allPages =
-    [ (buildPage [ "blog", "draft" ])
-    , (buildPage [ "blog", "hello" ])
-    , (buildPage [ "blog" ])
+    [ (buildPage [ "about" ])
     , (buildPage [  ])
+    , (buildPage [ "posts", "hebdomad" ])
+    , (buildPage [ "posts" ])
+    , (buildPage [ "posts", "mergesort" ])
+    , (buildPage [ "posts", "minima-talk" ])
+    , (buildPage [ "posts", "minima" ])
+    , (buildPage [ "posts", "moonflask" ])
+    , (buildPage [ "posts", "nginlog" ])
+    , (buildPage [ "posts", "two-years" ])
     ]
 
 pages =
-    { blog =
-        { draft = (buildPage [ "blog", "draft" ])
-        , hello = (buildPage [ "blog", "hello" ])
-        , index = (buildPage [ "blog" ])
-        , directory = directoryWithIndex ["blog"]
-        }
+    { about = (buildPage [ "about" ])
     , index = (buildPage [  ])
+    , posts =
+        { hebdomad = (buildPage [ "posts", "hebdomad" ])
+        , index = (buildPage [ "posts" ])
+        , mergesort = (buildPage [ "posts", "mergesort" ])
+        , minimaTalk = (buildPage [ "posts", "minima-talk" ])
+        , minima = (buildPage [ "posts", "minima" ])
+        , moonflask = (buildPage [ "posts", "moonflask" ])
+        , nginlog = (buildPage [ "posts", "nginlog" ])
+        , twoYears = (buildPage [ "posts", "two-years" ])
+        , directory = directoryWithIndex ["posts"]
+        }
     , directory = directoryWithIndex []
     }
 
 images =
     { articleCovers =
-        { hello = (buildImage [ "article-covers", "hello.jpg" ])
+        { canyonDeChelly = (buildImage [ "article-covers", "canyon-de-chelly.jpg" ])
+        , hebdomad = (buildImage [ "article-covers", "hebdomad.png" ])
+        , hello = (buildImage [ "article-covers", "hello.jpg" ])
+        , map = (buildImage [ "article-covers", "map.png" ])
+        , minima = (buildImage [ "article-covers", "minima.png" ])
+        , moonflask = (buildImage [ "article-covers", "moonflask.jpg" ])
         , mountains = (buildImage [ "article-covers", "mountains.jpg" ])
         , directory = directoryWithoutIndex ["articleCovers"]
         }
     , author =
-        { dillon = (buildImage [ "author", "dillon.jpg" ])
+        { bg = (buildImage [ "author", "bg.png" ])
         , directory = directoryWithoutIndex ["author"]
+        }
+    , blog =
+        { donuts = (buildImage [ "blog", "donuts.png" ])
+        , responsive = (buildImage [ "blog", "responsive.png" ])
+        , directory = directoryWithoutIndex ["blog"]
         }
     , elmLogo = (buildImage [ "elm-logo.svg" ])
     , github = (buildImage [ "github.svg" ])
     , iconPng = (buildImage [ "icon-png.png" ])
     , icon = (buildImage [ "icon.svg" ])
+    , lightWool = (buildImage [ "light-wool.png" ])
     , directory = directoryWithoutIndex []
     }
 
 allImages : List (ImagePath PathKey)
 allImages =
-    [(buildImage [ "article-covers", "hello.jpg" ])
+    [(buildImage [ "article-covers", "canyon-de-chelly.jpg" ])
+    , (buildImage [ "article-covers", "hebdomad.png" ])
+    , (buildImage [ "article-covers", "hello.jpg" ])
+    , (buildImage [ "article-covers", "map.png" ])
+    , (buildImage [ "article-covers", "minima.png" ])
+    , (buildImage [ "article-covers", "moonflask.jpg" ])
     , (buildImage [ "article-covers", "mountains.jpg" ])
-    , (buildImage [ "author", "dillon.jpg" ])
+    , (buildImage [ "author", "bg.png" ])
+    , (buildImage [ "blog", "donuts.png" ])
+    , (buildImage [ "blog", "responsive.png" ])
     , (buildImage [ "elm-logo.svg" ])
     , (buildImage [ "github.svg" ])
     , (buildImage [ "icon-png.png" ])
     , (buildImage [ "icon.svg" ])
+    , (buildImage [ "light-wool.png" ])
     ]
 
 
@@ -145,26 +176,62 @@ isValidRoute route =
 content : List ( List String, { extension: String, frontMatter : String, body : Maybe String } )
 content =
     [ 
-  ( ["blog", "draft"]
-    , { frontMatter = """{"type":"blog","author":"Dillon Kearns","title":"A Draft Blog Post","description":"I'm not quite ready to share this post with the world","image":"/images/article-covers/mountains.jpg","draft":true,"published":"2019-09-21"}
-""" , body = Nothing
-    , extension = "md"
-    } )
-  ,
-  ( ["blog", "hello"]
-    , { frontMatter = """{"type":"blog","author":"Dillon Kearns","title":"Hello `elm-pages`! 🚀","description":"Here's an intro for my blog post to get you interested in reading more...","image":"/images/article-covers/hello.jpg","published":"2019-09-21"}
-""" , body = Nothing
-    , extension = "md"
-    } )
-  ,
-  ( ["blog"]
-    , { frontMatter = """{"title":"elm-pages blog","type":"blog-index"}
+  ( ["about"]
+    , { frontMatter = """{"title":"about","type":"page"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( []
-    , { frontMatter = """{"title":"elm-pages-starter - a simple blog starter","type":"page"}
+    , { frontMatter = """{"title":"elm-pages blog","type":"blog-index"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "hebdomad"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Hebdomad","description":"Hebdomad is a xenharmonic web audio synthesizer","image":"/images/article-covers/hebdomad.png","draft":false,"published":"2017-01-03"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts"]
+    , { frontMatter = """{"title":"elm-pages blog","type":"blog-index"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "mergesort"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Haskell Merge Sort","description":"Haskell merge sort is fun and easy","image":"/images/article-covers/canyon-de-chelly.jpg","image-attribution":"Kelsie DiPerna","draft":false,"published":"2017-09-11"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "minima-talk"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking on minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/article-covers/minima.png","draft":false,"published":"2017-09-30"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "minima"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"minima","description":"Minima is a minimalist web audio playground","image":"/images/article-covers/minima.png","draft":false,"published":"2017-06-20"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "moonflask"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Moon Flask","description":"Moon Flask was my first web project","image":"/images/article-covers/moonflask.jpg","draft":false,"published":"2015-12-19"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "nginlog"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"nginlog","description":"nginlog is an nginx traffic analysis tool","image":"/images/article-covers/map.png","draft":false,"published":"2017-09-09"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["posts", "two-years"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Two years in summary","description":"Much has happened over the last two years","image":"/images/article-covers/map.png","draft":true,"published":"2019-10-13"}
 """ , body = Nothing
     , extension = "md"
     } )

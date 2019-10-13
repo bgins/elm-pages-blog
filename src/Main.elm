@@ -118,9 +118,19 @@ view model siteMetadata page =
         body
             |> Element.layout
                 [ Element.width Element.fill
-                , Font.size 20
-                , Font.family [ Font.typeface "Roboto" ]
+                , Element.height Element.fill
+                , Font.size 22
+                , Font.family [ Font.typeface "Gentium Basic" ]
                 , Font.color (Element.rgba255 0 0 0 0.8)
+                , Element.Background.color (Element.rgb255 255 254 254)
+                , Element.behindContent
+                    (Element.column
+                        [ Element.width Element.fill
+                        , Element.height Element.fill
+                        , Element.Background.tiled "/images/light-wool.png"
+                        ]
+                        []
+                    )
                 ]
     }
 
@@ -131,47 +141,58 @@ pageView model siteMetadata page =
         Metadata.Page metadata ->
             { title = metadata.title
             , body =
-                [ header page.path
-                , Element.column
-                    [ Element.padding 50
-                    , Element.spacing 60
-                    , Element.Region.mainContent
-                    ]
-                    [ page.view
-                    ]
-                ]
-                    |> Element.textColumn
-                        [ Element.width Element.fill
+                Element.column [ Element.width Element.fill, Element.height Element.fill ]
+                    [ header page.path
+                    , Element.column
+                        [ Element.paddingXY 40 40
+                        , Element.spacing 20
+                        , Element.Region.mainContent
+                        , Element.width (Element.fill |> Element.maximum 800)
+                        , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
+                        [ Element.el
+                            [ Font.size 60
+                            , Font.bold
+                            , Font.family [ Font.typeface "Galdeano" ]
+                            ]
+                            (Element.text metadata.title)
+                        , page.view
+                        ]
+
+                    -- [ if PagePath.toString page.path == "/" then
+                    -- [ if page.path == Pages.pages.index then
+                    --     Index.view siteMetadata
+                    --   else
+                    --     page.view
+                    -- ]
+                    ]
             }
 
         Metadata.Article metadata ->
             { title = metadata.title
             , body =
-                Element.column [ Element.width Element.fill ]
+                Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.padding 30
-                        , Element.spacing 40
+                        [ Element.paddingXY 30 40
+                        , Element.spacing 10
                         , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
-                        (Element.column [ Element.spacing 10 ]
-                            [ Element.row [ Element.spacing 10 ]
-                                [ Author.view [] metadata.author
-                                , Element.column [ Element.spacing 10, Element.width Element.fill ]
-                                    [ Element.paragraph [ Font.bold, Font.size 24 ]
-                                        [ Element.text metadata.author.name
-                                        ]
-                                    , Element.paragraph [ Font.size 16 ]
-                                        [ Element.text metadata.author.bio ]
+                        (Element.column []
+                            [ Element.column
+                                [ Element.spacing 25
+                                ]
+                                [ Element.column [ Element.spacing 10 ]
+                                    [ Palette.blogHeading metadata.title
+                                    , publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ]
                                     ]
+                                , articleImageView metadata.image metadata.imageAttribution
                                 ]
                             ]
-                            :: (publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ])
-                            :: Palette.blogHeading metadata.title
-                            :: articleImageView metadata.image
                             :: [ page.view ]
                         )
                     ]
@@ -199,21 +220,51 @@ pageView model siteMetadata page =
             }
 
         Metadata.BlogIndex ->
-            { title = "elm-pages blog"
+            { title = "blog"
             , body =
-                Element.column [ Element.width Element.fill ]
+                Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
-                    , Element.column [ Element.padding 20, Element.centerX ] [ Index.view siteMetadata ]
+                    , Element.column
+                        [ Element.padding 40
+                        , Element.spacing 20
+                        , Element.Region.mainContent
+                        , Element.width (Element.fill |> Element.maximum 800)
+                        , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
+                        ]
+                        [ Element.el
+                            [ Element.paddingXY 14 0
+                            , Font.size 60
+                            , Font.bold
+                            , Font.family [ Font.typeface "Galdeano" ]
+                            ]
+                            (Element.text "blog")
+                        , Index.view siteMetadata
+                        ]
                     ]
             }
 
 
-articleImageView : ImagePath Pages.PathKey -> Element msg
-articleImageView articleImage =
-    Element.image [ Element.width Element.fill ]
-        { src = ImagePath.toString articleImage
-        , description = "Article cover photo"
-        }
+articleImageView : ImagePath Pages.PathKey -> Maybe String -> Element msg
+articleImageView articleImage imageAttribution =
+    Element.column [ Element.spacing 7 ]
+        [ Element.image [ Element.width Element.fill ]
+            { src = ImagePath.toString articleImage
+            , description = "Blog post cover photo"
+            }
+        , case imageAttribution of
+            Just attribution ->
+                Element.row
+                    [ Font.size 18
+                    , Font.italic
+                    , Font.color (Element.rgba 0 0 0 0.5)
+                    ]
+                    [ Element.text ("Image by " ++ attribution)
+                    ]
+
+            Nothing ->
+                Element.none
+        ]
 
 
 header : PagePath Pages.PathKey -> Element msg
@@ -222,62 +273,57 @@ header currentPath =
         [ Element.el
             [ Element.height (Element.px 4)
             , Element.width Element.fill
-            , Element.Background.gradient
-                { angle = 0.2
-                , steps =
-                    [ Element.rgb255 0 242 96
-                    , Element.rgb255 5 117 230
-                    ]
-                }
+            , Element.Background.color (Element.rgb255 143 25 47)
             ]
             Element.none
         , Element.row
-            [ Element.paddingXY 25 4
+            [ Element.paddingXY 25 20
             , Element.spaceEvenly
             , Element.width Element.fill
             , Element.Region.navigation
+            , Element.Background.color (Element.rgb255 253 252 252)
+            , Element.Background.tiled "/images/light-wool.png"
             , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
-            , Element.Border.color (Element.rgba255 40 80 40 0.4)
+            , Element.Border.color (Element.rgba255 40 60 40 0.3)
+            , Font.family [ Font.typeface "Galdeano" ]
             ]
             [ Element.link []
                 { url = "/"
                 , label =
-                    Element.row [ Font.size 30, Element.spacing 16 ]
-                        [ DocumentSvg.view
-                        , Element.text "elm-pages-starter"
+                    Element.row [ Font.size 35 ]
+                        [ Element.text "syntactic overdrive"
                         ]
                 }
-            , Element.row [ Element.spacing 15 ]
-                [ elmDocsLink
-                , githubRepoLink
-                , highlightableLink currentPath pages.blog.directory "Blog"
+            , Element.row [ Element.spacing 15, Font.size 25 ]
+                [ pageLink pages.index "blog"
+                , pageLink pages.about "about"
                 ]
             ]
         ]
 
 
-highlightableLink :
-    PagePath Pages.PathKey
-    -> Directory Pages.PathKey Directory.WithIndex
-    -> String
-    -> Element msg
-highlightableLink currentPath linkDirectory displayName =
-    let
-        isHighlighted =
-            currentPath |> Directory.includes linkDirectory
-    in
-    Element.link
-        (if isHighlighted then
-            [ Font.underline
-            , Font.color Palette.color.primary
-            ]
 
-         else
-            []
-        )
-        { url = linkDirectory |> Directory.indexPath |> PagePath.toString
-        , label = Element.text displayName
-        }
+-- highlightableLink :
+--     PagePath Pages.PathKey
+--     -> Directory Pages.PathKey Directory.WithIndex
+--     -> String
+--     -> Element msg
+-- highlightableLink currentPath linkDirectory displayName =
+--     let
+--         isHighlighted =
+--             currentPath |> Directory.includes linkDirectory
+--     in
+--     Element.link
+--         (if isHighlighted then
+--             [ Font.underline
+--             , Font.color Palette.color.primary
+--             ]
+--          else
+--             []
+--         )
+--         { url = linkDirectory |> Directory.indexPath |> PagePath.toString
+--         , label = Element.text displayName
+--         }
 
 
 {-| <https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards>
@@ -291,7 +337,7 @@ head metadata =
         Metadata.Page meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "Brian Ginsburg's Blog"
+                , siteName = "syntactic overdrive"
                 , image =
                     { url = images.iconPng
                     , alt = "BG logo"
@@ -307,7 +353,7 @@ head metadata =
         Metadata.Article meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "Brian Ginsburg's Blog"
+                , siteName = "syntactic overdrive"
                 , image =
                     { url = meta.image
                     , alt = meta.description
@@ -344,7 +390,7 @@ head metadata =
             in
             Seo.summary
                 { canonicalUrlOverride = Nothing
-                , siteName = "Brian Ginsburg's Blog"
+                , siteName = "syntactic overdrive"
                 , image =
                     { url = meta.avatar
                     , alt = meta.name ++ "'s articles."
@@ -364,7 +410,7 @@ head metadata =
         Metadata.BlogIndex ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "Brian Ginsburg's Blog"
+                , siteName = "syntactic overdrive"
                 , image =
                     { url = images.iconPng
                     , alt = "BG logo"
@@ -395,27 +441,9 @@ publishedDateView metadata =
         )
 
 
-githubRepoLink : Element msg
-githubRepoLink =
-    Element.newTabLink []
-        { url = "https://github.com/dillonkearns/elm-pages"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.github, description = "Github repo" }
-        }
-
-
-elmDocsLink : Element msg
-elmDocsLink =
-    Element.newTabLink []
-        { url = "https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.elmLogo, description = "Elm Package Docs" }
+pageLink : PagePath Pages.PathKey -> String -> Element msg
+pageLink path label =
+    Element.link []
+        { url = PagePath.toString path
+        , label = Element.text label
         }
