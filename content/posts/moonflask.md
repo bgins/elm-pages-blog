@@ -10,7 +10,7 @@
 }
 ---
 
-_Moon Flask was my first web project -- a simple content management system for my first blog! Since that time, I have moved my blog to `Jekyll` and now `elm-pages`. My first post shows my early excitement for the web and data modeling._
+_Moon Flask was my first web project -- a simple content management system for my first blog! Since that time, I have moved my blog to `Jekyll` and now to `elm-pages`. My first post shows my early excitement for the web and data modeling._
 
 Moon Flask is a simple portfolio web application I built with Flask. This website runs on Moon Flask.
 

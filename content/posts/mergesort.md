@@ -12,8 +12,9 @@
 ---
 
 One of the things I love about Haskell is its expressiveness. What is
-full of process and detail in an imperative language is often a simple
-description in Haskell. As an example, consider merge sort.
+full of process in an imperative language is often a simple
+description in Haskell. As an example, consider one possible merge sort
+implementation.
 
 ## merge
 
@@ -141,5 +142,5 @@ Haskell will infer that we must be working with the arbitrary precision
 
 Expressiveness and type inference are a couple of the benefits of a Haskell
 merge sort. The benefits should be weighed against the performance cost. A
-Haskell merge sort implementation is probably not the best choice in many cases,
+Haskell merge sort implementation is probably not the best choice in some cases,
 but it is a nice choice when you can make it.

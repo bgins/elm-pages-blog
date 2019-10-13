@@ -431,7 +431,7 @@ canonicalSiteUrl =
 
 siteTagline : String
 siteTagline =
-    "A programming and music blog"
+    "Brian Ginsburg's Blog"
 
 
 publishedDateView metadata =

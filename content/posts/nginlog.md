@@ -10,10 +10,10 @@
 }
 ---
 
-nginlog is an nginx traffic analysis tool. I submitted nginlog as my final project for the 2017
+Nginlog is an nginx traffic analysis tool. I submitted nginlog as my final project for the 2017
 Full Stack Web Development course at Portland State University.
 
-nginlog consists of two components. A server component logs HTTP requests, and a
+Nginlog consists of two components. A server component logs HTTP requests, and a
 client application displays the data in charts and a map.
 
 ## Server
@@ -48,6 +48,4 @@ server component should require authentication for all requests of data. Users
 should be able to select time periods for each visualization, and search
 functionality should be added to all data tables.
 
-Beyond that, more robust tools do the work of nginlog and more. To compete
-against these tools, serious commitment and a significant amount of time and
-capital would be needed.
+The [source code](https://github.com/bgins/nginlog) for nginlog is available on GitHub.
