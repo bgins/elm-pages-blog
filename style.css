@@ -34,3 +34,23 @@ code {
 h2 {
   font-family: 'Galdeano', sans-serif;
 }
+
+@media only screen and (max-width: 599px) {
+  nav > a > div {
+    font-size: 24px !important;
+  }
+
+  nav > div > a > div {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  nav > a > div {
+    font-size: 30px !important;
+  }
+
+  nav > div > a > div {
+    font-size: 20px !important;
+  }
+}
