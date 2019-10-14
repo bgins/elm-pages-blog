@@ -220,7 +220,7 @@ pageView model siteMetadata page =
             }
 
         Metadata.BlogIndex ->
-            { title = "blog"
+            { title = "Blog"
             , body =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
@@ -238,7 +238,7 @@ pageView model siteMetadata page =
                             , Font.bold
                             , Font.family [ Font.typeface "Galdeano" ]
                             ]
-                            (Element.text "blog")
+                            (Element.text "Blog")
                         , Index.view siteMetadata
                         ]
                     ]
@@ -291,12 +291,12 @@ header currentPath =
                 { url = "/"
                 , label =
                     Element.row [ Font.size 35 ]
-                        [ Element.text "syntactic overdrive"
+                        [ Element.text "Syntactic Overdrive"
                         ]
                 }
             , Element.row [ Element.spacing 15, Font.size 25 ]
-                [ pageLink pages.index "blog"
-                , pageLink pages.about "about"
+                [ pageLink pages.index "Blog"
+                , pageLink pages.about "About"
                 ]
             ]
         ]
@@ -337,7 +337,7 @@ head metadata =
         Metadata.Page meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "syntactic overdrive"
+                , siteName = "Syntactic Overdrive"
                 , image =
                     { url = images.iconPng
                     , alt = "BG logo"
@@ -353,7 +353,7 @@ head metadata =
         Metadata.Article meta ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "syntactic overdrive"
+                , siteName = "Syntactic Overdrive"
                 , image =
                     { url = meta.image
                     , alt = meta.description
@@ -390,7 +390,7 @@ head metadata =
             in
             Seo.summary
                 { canonicalUrlOverride = Nothing
-                , siteName = "syntactic overdrive"
+                , siteName = "Syntactic Overdrive"
                 , image =
                     { url = meta.avatar
                     , alt = meta.name ++ "'s articles."
@@ -410,7 +410,7 @@ head metadata =
         Metadata.BlogIndex ->
             Seo.summaryLarge
                 { canonicalUrlOverride = Nothing
-                , siteName = "syntactic overdrive"
+                , siteName = "Syntactic Overdrive"
                 , image =
                     { url = images.iconPng
                     , alt = "BG logo"
@@ -419,7 +419,7 @@ head metadata =
                     }
                 , description = siteTagline
                 , locale = Nothing
-                , title = "blog"
+                , title = "Blog"
                 }
                 |> Seo.website
 
@@ -431,7 +431,7 @@ canonicalSiteUrl =
 
 siteTagline : String
 siteTagline =
-    "Brian Ginsburg's Blog"
+    "A blog about progamming and music"
 
 
 publishedDateView metadata =

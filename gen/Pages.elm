@@ -177,7 +177,7 @@ content : List ( List String, { extension: String, frontMatter : String, body : 
 content =
     [ 
   ( ["about"]
-    , { frontMatter = """{"title":"about","type":"page"}
+    , { frontMatter = """{"title":"About","type":"page"}
 """ , body = Nothing
     , extension = "md"
     } )
