@@ -121,10 +121,10 @@ postPreview post =
         [ Element.centerX
         , Element.width Element.fill
         , Element.Font.size 18
-        , Element.spacing 10
+        , Element.spacing 7
         ]
         [ title post.title
-        , Element.paragraph [] [ Element.text (post.published |> Date.format "MMMM ddd, yyyy") ]
+        , Element.paragraph [ Element.Font.color (Element.rgba255 0 0 0 0.8) ] [ Element.text (post.published |> Date.format "MMMM ddd, yyyy") ]
 
         -- , Element.row [ Element.spacing 5, Element.centerX ]
         --     [ Element.text (post.published |> Date.format "MMMM ddd, yyyy")
