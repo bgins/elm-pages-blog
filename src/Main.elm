@@ -16,6 +16,7 @@ import Html.Attributes as Attr
 import Index
 import Json.Decode
 import Markdown
+import MarkdownRenderer exposing (..)
 import Metadata exposing (Metadata)
 import Pages exposing (images, pages)
 import Pages.Directory as Directory exposing (Directory)
@@ -48,11 +49,6 @@ type alias Rendered =
     Element Msg
 
 
-
--- the intellij-elm plugin doesn't support type aliases for Programs so we need to use this line
--- main : Platform.Program Pages.Platform.Flags (Pages.Platform.Model Model Msg Metadata Rendered) (Pages.Platform.Msg Msg Metadata Rendered)
-
-
 main : Pages.Platform.Program Model Msg Metadata Rendered
 main =
     Pages.application
@@ -72,13 +68,7 @@ markdownDocument =
     Pages.Document.parser
         { extension = "md"
         , metadata = Metadata.decoder
-        , body =
-            \markdownBody ->
-                Html.div [] [ Markdown.toHtml [] markdownBody ]
-                    |> Element.html
-                    |> List.singleton
-                    |> Element.paragraph [ Element.width Element.fill ]
-                    |> Ok
+        , body = MarkdownRenderer.view
         }
 
 
@@ -176,7 +166,7 @@ pageView model siteMetadata page =
                     [ header page.path
                     , Element.column
                         [ Element.paddingXY 30 40
-                        , Element.spacing 10
+                        , Element.spacing 20
                         , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
@@ -300,30 +290,6 @@ header currentPath =
                 ]
             ]
         ]
-
-
-
--- highlightableLink :
---     PagePath Pages.PathKey
---     -> Directory Pages.PathKey Directory.WithIndex
---     -> String
---     -> Element msg
--- highlightableLink currentPath linkDirectory displayName =
---     let
---         isHighlighted =
---             currentPath |> Directory.includes linkDirectory
---     in
---     Element.link
---         (if isHighlighted then
---             [ Font.underline
---             , Font.color Palette.color.primary
---             ]
---          else
---             []
---         )
---         { url = linkDirectory |> Directory.indexPath |> PagePath.toString
---         , label = Element.text displayName
---         }
 
 
 {-| <https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards>

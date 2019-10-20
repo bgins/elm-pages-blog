@@ -1,38 +1,21 @@
-/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto&display=swap"); */
-/* @import url('https://fonts.googleapis.com/css?family=Gafata|Open+Sans:400,400i,700&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css?family=Galdeano|Open+Sans:400,400i,700&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css?family=Cousine&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css?family=Gentium+Basic|Inknut+Antiqua:400,600|Spectral+SC:400,600&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css?family=Gentium+Basic|Grenze&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Cousine:400,700|Galdeano|Gentium+Basic:400,400i,700&display=swap');
 
 avatar img {
   border-radius: 50%;
 }
 
-a {
-  color: #8f192f;
-  text-decoration: none;
+#markdown-link > div {
   border-bottom: 1px solid transparent;
   transition: border-bottom ease-out 0.6s;
 }
 
-a:hover {
+#markdown-link > div:hover {
   border-color: #8f192f;
   transition: border-bottom ease-in 0.15s;
 }
 
 div {
   transition: border-left ease-in-out 0.1s;
-}
-
-code {
-  font-size: 18px;
-  font-family: 'Cousine', monospace;
-}
-
-h2 {
-  font-family: 'Galdeano', sans-serif;
 }
 
 @media only screen and (max-width: 599px) {
@@ -42,6 +25,9 @@ h2 {
 
   nav > div > a > div {
     font-size: 16px !important;
+  }
+  #markdown-content {
+    width: 85vw;
   }
 }
 

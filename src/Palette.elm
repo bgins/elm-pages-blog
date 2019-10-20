@@ -6,7 +6,7 @@ import Element.Region
 
 
 color =
-    { primary = Element.rgb255 5 117 230
+    { primary = Element.rgb255 143 25 47
     , secondary = Element.rgb255 0 242 96
     }
 
