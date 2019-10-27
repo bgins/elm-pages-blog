@@ -109,9 +109,6 @@ view model siteMetadata page =
             |> Element.layout
                 [ Element.width Element.fill
                 , Element.height Element.fill
-                , Font.size 22
-                , Font.family [ Font.typeface "Gentium Basic" ]
-                , Font.color (Element.rgba255 0 0 0 0.8)
                 , Element.Background.color (Element.rgb255 255 254 254)
                 , Element.behindContent
                     (Element.column
@@ -121,6 +118,9 @@ view model siteMetadata page =
                         ]
                         []
                     )
+                , Font.size 18
+                , Font.family [ Font.typeface "Lato" ]
+                , Font.color (Element.rgba255 0 0 0 0.8)
                 ]
     }
 
@@ -134,19 +134,16 @@ pageView model siteMetadata page =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.paddingXY 40 40
+                        [ Element.height Element.fill
+                        , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
-                        [ Element.el
-                            [ Font.size 60
-                            , Font.bold
-                            , Font.family [ Font.typeface "Galdeano" ]
-                            ]
-                            (Element.text metadata.title)
+                        [ Element.paragraph
+                            []
+                            [ Palette.heading 1 [ Element.text metadata.title ] ]
                         , page.view
                         ]
 
@@ -165,20 +162,21 @@ pageView model siteMetadata page =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.paddingXY 30 40
+                        [ Element.height Element.fill
+                        , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
                         (Element.column []
                             [ Element.column
                                 [ Element.spacing 25
                                 ]
-                                [ Element.column [ Element.spacing 8 ]
+                                [ Element.column [ Element.spacing 10 ]
                                     [ Palette.blogHeading metadata.title
-                                    , publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ]
+                                    , publishedDateView metadata
+                                        |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ]
                                     ]
                                 , articleImageView metadata.image metadata.imageAttribution
                                 ]
@@ -196,9 +194,9 @@ pageView model siteMetadata page =
                     ]
                     [ header page.path
                     , Element.column
-                        [ Element.padding 30
+                        [ Element.Region.mainContent
+                        , Element.padding 30
                         , Element.spacing 20
-                        , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
                         ]
@@ -215,20 +213,15 @@ pageView model siteMetadata page =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.padding 40
+                        [ Element.Region.mainContent
+                        , Element.paddingXY 30 40
                         , Element.spacing 20
-                        , Element.Region.mainContent
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
-                        [ Element.el
-                            [ Element.paddingXY 14 0
-                            , Font.size 60
-                            , Font.bold
-                            , Font.family [ Font.typeface "Galdeano" ]
-                            ]
-                            (Element.text "Blog")
+                        [ Element.paragraph
+                            [ Element.paddingXY 14 0 ]
+                            [ Palette.heading 1 [ Element.text "Blog" ] ]
                         , Index.view siteMetadata
                         ]
                     ]
@@ -245,7 +238,7 @@ articleImageView articleImage imageAttribution =
         , case imageAttribution of
             Just attribution ->
                 Element.row
-                    [ Font.size 18
+                    [ Font.size 16
                     , Font.italic
                     , Font.color (Element.rgba 0 0 0 0.5)
                     ]
@@ -263,28 +256,28 @@ header currentPath =
         [ Element.el
             [ Element.height (Element.px 4)
             , Element.width Element.fill
-            , Element.Background.color (Element.rgb255 143 25 47)
+            , Element.Background.color Palette.color.primary
             ]
             Element.none
         , Element.row
-            [ Element.paddingXY 25 20
-            , Element.spaceEvenly
+            [ Element.Region.navigation
             , Element.width Element.fill
-            , Element.Region.navigation
+            , Element.paddingXY 25 20
+            , Element.spaceEvenly
             , Element.Background.color (Element.rgb255 253 252 252)
             , Element.Background.tiled "/images/light-wool.png"
             , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
             , Element.Border.color (Element.rgba255 40 60 40 0.3)
-            , Font.family [ Font.typeface "Galdeano" ]
+            , Font.family [ Font.typeface "Rosario" ]
             ]
             [ Element.link []
-                { url = "/"
+                { url = PagePath.toString pages.index
                 , label =
-                    Element.row [ Font.size 35 ]
+                    Element.row [ Font.size 28 ]
                         [ Element.text "Syntactic Overdrive"
                         ]
                 }
-            , Element.row [ Element.spacing 15, Font.size 25 ]
+            , Element.row [ Element.spacing 15 ]
                 [ pageLink pages.index "Blog"
                 , pageLink pages.about "About"
                 ]

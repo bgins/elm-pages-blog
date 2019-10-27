@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "elm": "^0.19.0-no-deps",
-    "elm-pages": "1.0.36",
+    "elm-pages": "^1.0.39",
     "http-server": "^0.11.1"
   }
 }

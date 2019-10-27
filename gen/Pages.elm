@@ -124,8 +124,6 @@ images =
         , responsive = (buildImage [ "blog", "responsive.png" ])
         , directory = directoryWithoutIndex ["blog"]
         }
-    , elmLogo = (buildImage [ "elm-logo.svg" ])
-    , github = (buildImage [ "github.svg" ])
     , iconPng = (buildImage [ "icon-png.png" ])
     , icon = (buildImage [ "icon.svg" ])
     , lightWool = (buildImage [ "light-wool.png" ])
@@ -144,8 +142,6 @@ allImages =
     , (buildImage [ "author", "bg.png" ])
     , (buildImage [ "blog", "donuts.png" ])
     , (buildImage [ "blog", "responsive.png" ])
-    , (buildImage [ "elm-logo.svg" ])
-    , (buildImage [ "github.svg" ])
     , (buildImage [ "icon-png.png" ])
     , (buildImage [ "icon.svg" ])
     , (buildImage [ "light-wool.png" ])

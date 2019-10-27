@@ -5,18 +5,19 @@ import Date
 import Element exposing (Element)
 import Element.Background
 import Element.Border
-import Element.Font
+import Element.Font as Font
 import Metadata exposing (Metadata)
 import Pages
 import Pages.PagePath as PagePath exposing (PagePath)
 import Pages.Platform exposing (Page)
+import Palette
 
 
 view :
     List ( PagePath Pages.PathKey, Metadata )
     -> Element msg
 view posts =
-    Element.column [ Element.paddingXY 0 0, Element.spacing 20 ]
+    Element.column [ Element.spacing 10 ]
         (posts
             |> List.filterMap
                 (\( path, metadata ) ->
@@ -67,34 +68,20 @@ linkToPost postPath content =
         { url = PagePath.toString postPath, label = content }
 
 
-title : String -> Element msg
-title text =
-    [ Element.text text ]
-        |> Element.paragraph
-            [ Element.Font.size 36
-
-            -- , Element.Font.center
-            , Element.Font.family [ Element.Font.typeface "Galdeano" ]
-            , Element.Font.semiBold
-
-            -- , Element.padding 16
-            ]
-
-
 articleIndex : Metadata.ArticleMetadata -> Element msg
 articleIndex metadata =
     Element.el
-        [ Element.centerX
-        , Element.width (Element.maximum 800 Element.fill)
+        [ Element.width (Element.maximum 800 Element.fill)
         , Element.padding 10
         , Element.spacing 10
+        , Element.centerX
         , Element.Border.widthEach
             { bottom = 0
             , left = 4
             , right = 0
             , top = 0
             }
-        , Element.Border.color (Element.rgba255 0 0 0 0)
+        , Element.Border.color (Element.rgba255 255 255 255 0)
         , Element.mouseOver
             [ Element.Border.color (Element.rgba255 143 25 47 0.75)
             ]
@@ -102,45 +89,15 @@ articleIndex metadata =
         (postPreview metadata)
 
 
-
--- readMoreLink =
---     Element.text "Continue reading >>"
---         |> Element.el
---             [ Element.centerX
---             , Element.Font.size 18
---             , Element.alpha 0.6
---             , Element.mouseOver [ Element.alpha 1 ]
---             , Element.Font.underline
---             , Element.Font.center
---             ]
-
-
 postPreview : Metadata.ArticleMetadata -> Element msg
 postPreview post =
     Element.textColumn
-        [ Element.centerX
-        , Element.width Element.fill
-        , Element.Font.size 18
-        , Element.spacing 7
+        [ Element.width Element.fill
+        , Element.centerX
+        , Element.spacing 5
         ]
-        [ title post.title
-        , Element.paragraph [ Element.Font.color (Element.rgba255 0 0 0 0.8) ] [ Element.text (post.published |> Date.format "MMMM ddd, yyyy") ]
-
-        -- , Element.row [ Element.spacing 5, Element.centerX ]
-        --     [ Element.text (post.published |> Date.format "MMMM ddd, yyyy")
-        --     ]
-        -- [ Data.Author.view [ Element.width (Element.px 40) ] post.author
-        -- , Element.text post.author.name
-        -- , Element.text "•"
-        -- , Element.text (post.published |> Date.format "MMMM ddd, yyyy")
-        -- ]
-        -- , post.description
-        --     |> Element.text
-        --     |> List.singleton
-        --     |> Element.paragraph
-        --         [ Element.Font.size 22
-        --         , Element.Font.center
-        --         , Element.Font.family [ Element.Font.typeface "Gentium Basic" ]
-        --         ]
-        -- , readMoreLink
+        [ Palette.heading 2 [ Element.text post.title ]
+        , Element.paragraph
+            [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.7) ]
+            [ Element.text (post.published |> Date.format "MMMM ddd, yyyy") ]
         ]

@@ -136,30 +136,30 @@ rawTextToId rawText =
 heading : { level : Int, rawText : String, children : List (Element msg) } -> Element msg
 heading { level, rawText, children } =
     Element.paragraph
-        [ Font.size
-            (case level of
-                1 ->
-                    36
-
-                2 ->
-                    33
-
-                _ ->
-                    20
-            )
-        , Font.bold
-        , Font.family [ Font.typeface "Galdeano" ]
-        , Element.Region.heading level
+        [ Element.Region.heading level
         , Element.htmlAttribute
             (Html.Attributes.attribute "name" (rawTextToId rawText))
         , Element.htmlAttribute
             (Html.Attributes.id (rawTextToId rawText))
         , Element.paddingEach
-            { top = 15
+            { top = 10
             , right = 0
             , bottom = 0
             , left = 0
             }
+        , Font.size
+            (case level of
+                1 ->
+                    36
+
+                2 ->
+                    28
+
+                _ ->
+                    18
+            )
+        , Font.family [ Font.typeface "Rosario" ]
+        , Font.bold
         ]
         children
 
