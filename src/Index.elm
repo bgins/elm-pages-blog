@@ -63,7 +63,6 @@ linkToPost : PagePath Pages.PathKey -> Element msg -> Element msg
 linkToPost postPath content =
     Element.link
         [ Element.width Element.fill
-        , Element.Background.color (Element.rgb255 255 255 255)
         ]
         { url = PagePath.toString postPath, label = content }
 
