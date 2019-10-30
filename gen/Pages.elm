@@ -173,7 +173,7 @@ content : List ( List String, { extension: String, frontMatter : String, body : 
 content =
     [ 
   ( ["about"]
-    , { frontMatter = """{"title":"About","type":"page"}
+    , { frontMatter = """{"type":"profile","title":"About","name":"Brian Ginsburg","avatar":"/images/author/bg.png","bio":"Brian Ginsburg is a Software Developer and Instructor at Kinetic Technology Solutions."}
 """ , body = Nothing
     , extension = "md"
     } )

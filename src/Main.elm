@@ -1,9 +1,9 @@
 module Main exposing (main)
 
+-- import Data.Author as Author
+
 import Color
-import Data.Author as Author
 import Date
-import DocumentSvg
 import Element exposing (Element)
 import Element.Background
 import Element.Border
@@ -134,12 +134,13 @@ pageView model siteMetadata page =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.height Element.fill
+                        [ Element.Region.mainContent
+                        , Element.width (Element.fill |> Element.maximum 800)
+                        , Element.height Element.fill
                         , Element.paddingXY 30 40
                         , Element.spacing 20
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
                         [ Element.paragraph
                             []
@@ -162,12 +163,13 @@ pageView model siteMetadata page =
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
-                        [ Element.height Element.fill
+                        [ Element.Region.mainContent
+                        , Element.width (Element.fill |> Element.maximum 800)
+                        , Element.height Element.fill
                         , Element.paddingXY 30 40
                         , Element.spacing 20
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
                         (Element.column []
                             [ Element.column
@@ -186,23 +188,40 @@ pageView model siteMetadata page =
                     ]
             }
 
-        Metadata.Author author ->
-            { title = author.name
+        Metadata.Profile profile ->
+            { title = profile.title
             , body =
-                Element.column
-                    [ Element.width Element.fill
-                    ]
+                -- Element.column
+                --     [ Element.width Element.fill
+                --     ]
+                --     [ header page.path
+                --     , Element.column
+                --         [ Element.Region.mainContent
+                --         , Element.padding 30
+                --         , Element.spacing 20
+                --         , Element.width (Element.fill |> Element.maximum 800)
+                --         , Element.centerX
+                --         ]
+                --         [ Palette.blogHeading author.name
+                --         , Author.view [] author
+                --         , Element.paragraph [ Element.centerX, Font.center ] [ page.view ]
+                --         ]
+                --     ]
+                Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
                         [ Element.Region.mainContent
-                        , Element.padding 30
-                        , Element.spacing 20
                         , Element.width (Element.fill |> Element.maximum 800)
+                        , Element.height Element.fill
+                        , Element.paddingXY 30 40
+                        , Element.spacing 20
                         , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
-                        [ Palette.blogHeading author.name
-                        , Author.view [] author
-                        , Element.paragraph [ Element.centerX, Font.center ] [ page.view ]
+                        [ Element.paragraph
+                            []
+                            [ Palette.heading 1 [ Element.text profile.title ] ]
+                        , page.view
                         ]
                     ]
             }
@@ -214,9 +233,9 @@ pageView model siteMetadata page =
                     [ header page.path
                     , Element.column
                         [ Element.Region.mainContent
+                        , Element.width (Element.fill |> Element.maximum 800)
                         , Element.paddingXY 30 40
                         , Element.spacing 20
-                        , Element.width (Element.fill |> Element.maximum 800)
                         , Element.centerX
                         ]
                         [ Element.paragraph
@@ -331,7 +350,7 @@ head metadata =
                     , expirationTime = Nothing
                     }
 
-        Metadata.Author meta ->
+        Metadata.Profile meta ->
             let
                 ( firstName, lastName ) =
                     case meta.name |> String.split " " of
@@ -352,13 +371,13 @@ head metadata =
                 , siteName = "Syntactic Overdrive"
                 , image =
                     { url = meta.avatar
-                    , alt = meta.name ++ "'s articles."
+                    , alt = meta.name ++ "'s profile."
                     , dimensions = Nothing
                     , mimeType = Nothing
                     }
                 , description = meta.bio
                 , locale = Nothing
-                , title = meta.name ++ "'s articles."
+                , title = meta.name ++ "'s profile."
                 }
                 |> Seo.profile
                     { firstName = firstName

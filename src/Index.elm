@@ -1,6 +1,5 @@
 module Index exposing (view)
 
-import Data.Author
 import Date
 import Element exposing (Element)
 import Element.Background
@@ -25,7 +24,7 @@ view posts =
                         Metadata.Page meta ->
                             Nothing
 
-                        Metadata.Author _ ->
+                        Metadata.Profile _ ->
                             Nothing
 
                         Metadata.Article meta ->

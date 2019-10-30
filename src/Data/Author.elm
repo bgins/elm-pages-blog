@@ -19,7 +19,7 @@ all : List Author
 all =
     [ { name = "Brian Ginsburg"
       , avatar = Pages.images.author.bg
-      , bio = "Software developer and educator at Kinetic Technology Solutions."
+      , bio = "Brian Ginsburg is a Software Developer and Instructor at Kinetic Technology Solutions."
       }
     ]
 

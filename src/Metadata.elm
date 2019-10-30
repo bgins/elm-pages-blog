@@ -13,8 +13,12 @@ import Pages.ImagePath as ImagePath exposing (ImagePath)
 type Metadata
     = Page PageMetadata
     | Article ArticleMetadata
-    | Author Data.Author.Author
+    | Profile ProfileMetadata
     | BlogIndex
+
+
+type alias PageMetadata =
+    { title : String }
 
 
 type alias ArticleMetadata =
@@ -28,8 +32,12 @@ type alias ArticleMetadata =
     }
 
 
-type alias PageMetadata =
-    { title : String }
+type alias ProfileMetadata =
+    { title : String
+    , name : String
+    , avatar : ImagePath Pages.PathKey
+    , bio : String
+    }
 
 
 decoder =
@@ -44,12 +52,13 @@ decoder =
                     "blog-index" ->
                         Decode.succeed BlogIndex
 
-                    "author" ->
-                        Decode.map3 Data.Author.Author
+                    "profile" ->
+                        Decode.map4 ProfileMetadata
+                            (Decode.field "title" Decode.string)
                             (Decode.field "name" Decode.string)
                             (Decode.field "avatar" imageDecoder)
                             (Decode.field "bio" Decode.string)
-                            |> Decode.map Author
+                            |> Decode.map Profile
 
                     "blog" ->
                         Decode.map7 ArticleMetadata

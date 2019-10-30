@@ -1,6 +1,11 @@
 ---
-title: About
-type: page
+{
+  'type': 'profile',
+  'title': 'About',
+  'name': 'Brian Ginsburg',
+  'avatar': '/images/author/bg.png',
+  'bio': 'Brian Ginsburg is a Software Developer and Instructor at Kinetic Technology Solutions.'
+}
 ---
 
 Hello, my name is Brian Ginsburg. I am a Software Developer and Instructor at [Kinetic Technology Solutions](https://www.kinetictechsolutions.com/).
