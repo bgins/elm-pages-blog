@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Two years in summary',
   'description': 'Much has happened over the last two years',
-  'image': '/images/article-covers/map.png',
+  'image': '/images/icon-png.png',
   'draft': true,
   'published': '2019-10-13',
 }

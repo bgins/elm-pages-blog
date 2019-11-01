@@ -105,45 +105,51 @@ pages =
     }
 
 images =
-    { articleCovers =
-        { canyonDeChelly = (buildImage [ "article-covers", "canyon-de-chelly.jpg" ])
-        , hebdomad = (buildImage [ "article-covers", "hebdomad.png" ])
-        , hello = (buildImage [ "article-covers", "hello.jpg" ])
-        , map = (buildImage [ "article-covers", "map.png" ])
-        , minima = (buildImage [ "article-covers", "minima.png" ])
-        , moonflask = (buildImage [ "article-covers", "moonflask.jpg" ])
-        , mountains = (buildImage [ "article-covers", "mountains.jpg" ])
-        , directory = directoryWithoutIndex ["articleCovers"]
-        }
-    , author =
+    { author =
         { bg = (buildImage [ "author", "bg.png" ])
         , directory = directoryWithoutIndex ["author"]
         }
     , blog =
-        { donuts = (buildImage [ "blog", "donuts.png" ])
-        , responsive = (buildImage [ "blog", "responsive.png" ])
+        { hebdomad =
+            { hebdomad = (buildImage [ "blog", "hebdomad", "hebdomad.png" ])
+            , directory = directoryWithoutIndex ["blog", "hebdomad"]
+            }
+        , mergesort =
+            { mergesort = (buildImage [ "blog", "mergesort", "mergesort.jpg" ])
+            , directory = directoryWithoutIndex ["blog", "mergesort"]
+            }
+        , minima =
+            { minima = (buildImage [ "blog", "minima", "minima.png" ])
+            , directory = directoryWithoutIndex ["blog", "minima"]
+            }
+        , moonflask =
+            { moonflask = (buildImage [ "blog", "moonflask", "moonflask.jpg" ])
+            , directory = directoryWithoutIndex ["blog", "moonflask"]
+            }
+        , nginlog =
+            { donuts = (buildImage [ "blog", "nginlog", "donuts.png" ])
+            , nginlog = (buildImage [ "blog", "nginlog", "nginlog.png" ])
+            , responsive = (buildImage [ "blog", "nginlog", "responsive.png" ])
+            , directory = directoryWithoutIndex ["blog", "nginlog"]
+            }
         , directory = directoryWithoutIndex ["blog"]
         }
     , iconPng = (buildImage [ "icon-png.png" ])
-    , icon = (buildImage [ "icon.svg" ])
     , lightWool = (buildImage [ "light-wool.png" ])
     , directory = directoryWithoutIndex []
     }
 
 allImages : List (ImagePath PathKey)
 allImages =
-    [(buildImage [ "article-covers", "canyon-de-chelly.jpg" ])
-    , (buildImage [ "article-covers", "hebdomad.png" ])
-    , (buildImage [ "article-covers", "hello.jpg" ])
-    , (buildImage [ "article-covers", "map.png" ])
-    , (buildImage [ "article-covers", "minima.png" ])
-    , (buildImage [ "article-covers", "moonflask.jpg" ])
-    , (buildImage [ "article-covers", "mountains.jpg" ])
-    , (buildImage [ "author", "bg.png" ])
-    , (buildImage [ "blog", "donuts.png" ])
-    , (buildImage [ "blog", "responsive.png" ])
+    [(buildImage [ "author", "bg.png" ])
+    , (buildImage [ "blog", "hebdomad", "hebdomad.png" ])
+    , (buildImage [ "blog", "mergesort", "mergesort.jpg" ])
+    , (buildImage [ "blog", "minima", "minima.png" ])
+    , (buildImage [ "blog", "moonflask", "moonflask.jpg" ])
+    , (buildImage [ "blog", "nginlog", "donuts.png" ])
+    , (buildImage [ "blog", "nginlog", "nginlog.png" ])
+    , (buildImage [ "blog", "nginlog", "responsive.png" ])
     , (buildImage [ "icon-png.png" ])
-    , (buildImage [ "icon.svg" ])
     , (buildImage [ "light-wool.png" ])
     ]
 
@@ -185,7 +191,7 @@ content =
     } )
   ,
   ( ["posts", "hebdomad"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Hebdomad","description":"Hebdomad is a xenharmonic web audio synthesizer","image":"/images/article-covers/hebdomad.png","draft":false,"published":"2017-01-03"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Hebdomad","description":"Hebdomad is a xenharmonic web audio synthesizer","image":"/images/blog/hebdomad/hebdomad.png","draft":false,"published":"2017-01-03"}
 """ , body = Nothing
     , extension = "md"
     } )
@@ -197,37 +203,37 @@ content =
     } )
   ,
   ( ["posts", "mergesort"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Haskell Merge Sort","description":"Haskell merge sort is fun and easy","image":"/images/article-covers/canyon-de-chelly.jpg","image-attribution":"Kelsie DiPerna","draft":false,"published":"2017-09-11"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Haskell Merge Sort","description":"Haskell merge sort is fun and easy","image":"/images/blog/mergesort/mergesort.jpg","image-attribution":"Kelsie DiPerna","draft":false,"published":"2017-09-11"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( ["posts", "minima-talk"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking on minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/article-covers/minima.png","draft":false,"published":"2017-09-30"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking on minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-09-30"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( ["posts", "minima"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"minima","description":"Minima is a minimalist web audio playground","image":"/images/article-covers/minima.png","draft":false,"published":"2017-06-20"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"minima","description":"Minima is a minimalist web audio playground","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-06-20"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( ["posts", "moonflask"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Moon Flask","description":"Moon Flask was my first web project","image":"/images/article-covers/moonflask.jpg","draft":false,"published":"2015-12-19"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Moon Flask","description":"Moon Flask was my first web project","image":"/images/blog/moonflask/moonflask.jpg","draft":false,"published":"2015-12-19"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( ["posts", "nginlog"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"nginlog","description":"nginlog is an nginx traffic analysis tool","image":"/images/article-covers/map.png","draft":false,"published":"2017-09-09"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"nginlog","description":"nginlog is an nginx traffic analysis tool","image":"/images/blog/nginlog/nginlog.png","draft":false,"published":"2017-09-09"}
 """ , body = Nothing
     , extension = "md"
     } )
   ,
   ( ["posts", "two-years"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Two years in summary","description":"Much has happened over the last two years","image":"/images/article-covers/map.png","draft":true,"published":"2019-10-13"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Two years in summary","description":"Much has happened over the last two years","image":"/images/icon-png.png","draft":true,"published":"2019-10-13"}
 """ , body = Nothing
     , extension = "md"
     } )

@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Hebdomad',
   'description': 'Hebdomad is a xenharmonic web audio synthesizer',
-  'image': '/images/article-covers/hebdomad.png',
+  'image': '/images/blog/hebdomad/hebdomad.png',
   'draft': false,
   'published': '2017-01-03',
 }

@@ -1,16 +1,16 @@
 # elm-pages-starter
 
-This is an example repo to get you up and running with `elm-pages`.
+This is my blog built with `elm-pages`. I used [elm-pages-starter](https://github.com/dillonkearns/elm-pages-starter) as a starting point.
 
-The entrypoint file is `index.js`. That file imports `src/Main.elm`. The `content` folder is turned into your static pages. The rest is mostly determined by logic in the Elm code! Learn more with the resources below.
+Any parts of the `elm-pages-blog` may be used under a BSD-3 license with the exception of the text and images that make up my blog posts. Feel free to ask me if you would like to use that content. Most likely I will say yes.
+
+The setup instructions and links to documentation that follow are lightly adapted from the `elm-pages-starter` repository.
 
 ## Setup Instructions
-Click "Use this template" on this Github page to fork the repo.
-
-Or git clone it:
+git clone it:
 
 ```
-git clone git@github.com:dillonkearns/elm-pages-starter.git
+git clone git@github.com:bgins/elm-pages-blog.git
 ```
 
 Then install and run the dev server

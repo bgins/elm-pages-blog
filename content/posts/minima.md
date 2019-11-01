@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'minima',
   'description': 'Minima is a minimalist web audio playground',
-  'image': '/images/article-covers/minima.png',
+  'image': '/images/blog/minima/minima.png',
   'draft': false,
   'published': '2017-06-20',
 }

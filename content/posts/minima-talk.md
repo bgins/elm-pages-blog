@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Speaking on minima',
   'description': 'Preseting Minima at the Functional Programming Study Group',
-  'image': '/images/article-covers/minima.png',
+  'image': '/images/blog/minima/minima.png',
   'draft': false,
   'published': '2017-09-30',
 }

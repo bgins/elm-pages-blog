@@ -1,7 +1,5 @@
 module Main exposing (main)
 
--- import Data.Author as Author
-
 import Color
 import Date
 import Element exposing (Element)
@@ -140,20 +138,13 @@ pageView model siteMetadata page =
                         , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
+                        , Element.Background.color Palette.color.white
                         ]
                         [ Element.paragraph
                             []
                             [ Palette.heading 1 [ Element.text metadata.title ] ]
                         , page.view
                         ]
-
-                    -- [ if PagePath.toString page.path == "/" then
-                    -- [ if page.path == Pages.pages.index then
-                    --     Index.view siteMetadata
-                    --   else
-                    --     page.view
-                    -- ]
                     ]
             }
 
@@ -169,7 +160,7 @@ pageView model siteMetadata page =
                         , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
+                        , Element.Background.color Palette.color.white
                         ]
                         (Element.column []
                             [ Element.column
@@ -191,22 +182,6 @@ pageView model siteMetadata page =
         Metadata.Profile profile ->
             { title = profile.title
             , body =
-                -- Element.column
-                --     [ Element.width Element.fill
-                --     ]
-                --     [ header page.path
-                --     , Element.column
-                --         [ Element.Region.mainContent
-                --         , Element.padding 30
-                --         , Element.spacing 20
-                --         , Element.width (Element.fill |> Element.maximum 800)
-                --         , Element.centerX
-                --         ]
-                --         [ Palette.blogHeading author.name
-                --         , Author.view [] author
-                --         , Element.paragraph [ Element.centerX, Font.center ] [ page.view ]
-                --         ]
-                --     ]
                 Element.column [ Element.width Element.fill, Element.height Element.fill ]
                     [ header page.path
                     , Element.column
@@ -216,7 +191,7 @@ pageView model siteMetadata page =
                         , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
+                        , Element.Background.color Palette.color.white
                         ]
                         [ Element.paragraph
                             []
@@ -237,7 +212,7 @@ pageView model siteMetadata page =
                         , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.centerX
-                        , Element.Background.color (Element.rgb255 255 255 255)
+                        , Element.Background.color Palette.color.white
                         ]
                         [ Element.paragraph
                             [ Element.paddingXY 14 0 ]

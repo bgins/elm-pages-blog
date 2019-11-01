@@ -79,7 +79,7 @@ articleIndex metadata =
             , right = 0
             , top = 0
             }
-        , Element.Border.color (Element.rgba255 255 255 255 0)
+        , Element.Border.color Palette.color.white
         , Element.mouseOver
             [ Element.Border.color (Element.rgba255 143 25 47 0.75)
             ]

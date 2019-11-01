@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'nginlog',
   'description': 'nginlog is an nginx traffic analysis tool',
-  'image': '/images/article-covers/map.png',
+  'image': '/images/blog/nginlog/nginlog.png',
   'draft': false,
   'published': '2017-09-09',
 }
@@ -33,13 +33,13 @@ country.
 The charts and tables display total and unique requests by country and host, as
 well as total requests by status code and user agent.
 
-![nginlog Donut Charts](/images/blog/donuts.png)
+![nginlog Donut Charts](/images/blog/nginlog/donuts.png)
 
 The client application is responsive to screen size. On a mobile device, the
 sidebar menu hides under a menu button and all visualizations resize or
 transform to fit neatly into a single column.
 
-![nginlog Responsive View](/images/blog/responsive.png)
+![nginlog Responsive View](/images/blog/nginlog/responsive.png)
 
 ## Utility
 
