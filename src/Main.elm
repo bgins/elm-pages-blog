@@ -237,6 +237,7 @@ pageView model siteMetadata page =
                         , Element.paddingXY 30 40
                         , Element.spacing 20
                         , Element.centerX
+                        , Element.Background.color (Element.rgb255 255 255 255)
                         ]
                         [ Element.paragraph
                             [ Element.paddingXY 14 0 ]
@@ -283,8 +284,6 @@ header currentPath =
             , Element.width Element.fill
             , Element.paddingXY 25 20
             , Element.spaceEvenly
-            , Element.Background.color (Element.rgb255 253 252 252)
-            , Element.Background.tiled "/images/light-wool.png"
             , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
             , Element.Border.color (Element.rgba255 40 60 40 0.3)
             , Font.family [ Font.typeface "Rosario" ]
