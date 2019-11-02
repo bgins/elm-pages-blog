@@ -76,10 +76,7 @@ application config =
 allPages : List (PagePath PathKey)
 allPages =
     [ (buildPage [ "about" ])
-    , (buildPage [ "hebdomad" ])
     , (buildPage [  ])
-    , (buildPage [ "minima" ])
-    , (buildPage [ "moon-forge" ])
     , (buildPage [ "posts", "hebdomad" ])
     , (buildPage [ "posts" ])
     , (buildPage [ "posts", "mergesort" ])
@@ -92,10 +89,7 @@ allPages =
 
 pages =
     { about = (buildPage [ "about" ])
-    , hebdomad = (buildPage [ "hebdomad" ])
     , index = (buildPage [  ])
-    , minima = (buildPage [ "minima" ])
-    , moonForge = (buildPage [ "moon-forge" ])
     , posts =
         { hebdomad = (buildPage [ "posts", "hebdomad" ])
         , index = (buildPage [ "posts" ])
@@ -190,26 +184,8 @@ content =
     , extension = "md"
     } )
   ,
-  ( ["hebdomad"]
-    , { frontMatter = """{"type":"page","title":"Hebdomad has Moved"}
-""" , body = Nothing
-    , extension = "md"
-    } )
-  ,
   ( []
     , { frontMatter = """{"title":"elm-pages blog","type":"blog-index"}
-""" , body = Nothing
-    , extension = "md"
-    } )
-  ,
-  ( ["minima"]
-    , { frontMatter = """{"type":"page","title":"Minima has Moved"}
-""" , body = Nothing
-    , extension = "md"
-    } )
-  ,
-  ( ["moon-forge"]
-    , { frontMatter = """{"type":"page","title":"Moon Forge has Moved"}
 """ , body = Nothing
     , extension = "md"
     } )
