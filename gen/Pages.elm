@@ -87,7 +87,7 @@ allPages =
     , (buildPage [ "posts", "minima" ])
     , (buildPage [ "posts", "moonflask" ])
     , (buildPage [ "posts", "nginlog" ])
-    , (buildPage [ "posts", "two-years" ])
+    , (buildPage [ "posts", "s3-static-pt1" ])
     ]
 
 pages =
@@ -104,7 +104,7 @@ pages =
         , minima = (buildPage [ "posts", "minima" ])
         , moonflask = (buildPage [ "posts", "moonflask" ])
         , nginlog = (buildPage [ "posts", "nginlog" ])
-        , twoYears = (buildPage [ "posts", "two-years" ])
+        , s3StaticPt1 = (buildPage [ "posts", "s3-static-pt1" ])
         , directory = directoryWithIndex ["posts"]
         }
     , directory = directoryWithIndex []
@@ -138,6 +138,14 @@ images =
             , responsive = (buildImage [ "blog", "nginlog", "responsive.png" ])
             , directory = directoryWithoutIndex ["blog", "nginlog"]
             }
+        , s3StaticPt1 =
+            { goodBucketName = (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+            , publicAccess = (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
+            , s3Static = (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
+            , staticHosting = (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
+            , upload = (buildImage [ "blog", "s3-static-pt1", "upload.png" ])
+            , directory = directoryWithoutIndex ["blog", "s3StaticPt1"]
+            }
         , directory = directoryWithoutIndex ["blog"]
         }
     , iconPng = (buildImage [ "icon-png.png" ])
@@ -155,6 +163,11 @@ allImages =
     , (buildImage [ "blog", "nginlog", "donuts.png" ])
     , (buildImage [ "blog", "nginlog", "nginlog.png" ])
     , (buildImage [ "blog", "nginlog", "responsive.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
+    , (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "upload.png" ])
     , (buildImage [ "icon-png.png" ])
     , (buildImage [ "light-wool.png" ])
     ]
@@ -256,8 +269,8 @@ content =
     , extension = "md"
     } )
   ,
-  ( ["posts", "two-years"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Two years in summary","description":"Much has happened over the last two years","image":"/images/icon-png.png","draft":true,"published":"2019-10-13"}
+  ( ["posts", "s3-static-pt1"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Deploying elm-pages as a S3 Static Site, Part I","description":"We deploy an elm-pages blog to an AWS S3 bucket.","image":"/images/blog/s3-static-pt1/s3-static.jpg","image-attribution":"maxizapata of pixabay","draft":false,"published":"2019-11-02"}
 """ , body = Nothing
     , extension = "md"
     } )
