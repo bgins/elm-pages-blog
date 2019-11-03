@@ -246,7 +246,7 @@ content =
     } )
   ,
   ( ["posts", "minima-talk"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking on minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-09-30"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking: On minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-09-30"}
 """ , body = Nothing
     , extension = "md"
     } )

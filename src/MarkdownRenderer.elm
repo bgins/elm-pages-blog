@@ -96,26 +96,7 @@ renderer =
     , codeBlock = codeBlock
     , html =
         Markdown.Html.oneOf
-            [ Markdown.Html.tag "Values"
-                (\children ->
-                    Element.row
-                        [ Element.spacing 30
-                        , Element.htmlAttribute (Html.Attributes.style "flex-wrap" "wrap")
-                        ]
-                        children
-                )
-            , Markdown.Html.tag "Value"
-                (\children ->
-                    Element.column
-                        [ Element.width Element.fill
-                        , Element.padding 20
-                        , Element.spacing 20
-                        , Element.height Element.fill
-                        , Element.centerX
-                        ]
-                        children
-                )
-            , Markdown.Html.tag "Oembed"
+            [ Markdown.Html.tag "Oembed"
                 (\url children ->
                     Oembed.view [] Nothing url
                         |> Maybe.map Element.html

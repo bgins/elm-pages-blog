@@ -13,7 +13,7 @@
 Minima is simple web audio application for experimenting with minimalist music
 patterns. Minima is written in Elm and JavaScript.
 
-[Try minima here](https://brianginsburg.com/minima).
+[Try minima here](https://minima.brianginsburg.com).
 
 ## Audio
 
