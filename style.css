@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Cousine:400,700|Lato:400,400i,700|Rosario:400,700&display=swap');
 
-#markdown-link > div {
+.markdown-link > div {
+  color: #8f192f;
   border-bottom: 1px solid transparent;
   transition: border-bottom ease-out 0.6s;
 }
 
-#markdown-link > div:hover {
+.markdown-link > div:hover {
   border-color: #8f192f;
   transition: border-bottom ease-in 0.15s;
 }

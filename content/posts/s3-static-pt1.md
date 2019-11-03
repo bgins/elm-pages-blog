@@ -22,11 +22,12 @@ Most of the information in this series will apply to any static site, but I am
 fond of `elm-pages`. Here is what Chrome's Lighthouse audit tool thinks of this
 page.
 
-*lighthouse image*
+![Lighthouse report](/images/blog/s3-static-pt1/lighthouse.png)
 
-I highly recommend [elm-pages](https://github.com/dillonkearns/elm-pages) for making
-fast, accessible static sites. It does for [elm](https://elm-lang.org/) what 
-[Gatsby](https://www.gatsbyjs.org/) has done for [React](https://reactjs.org/).
+I highly recommend [elm-pages](https://github.com/dillonkearns/elm-pages) for
+making fast, accessible static sites. It does for [elm](https://elm-lang.org/)
+what [Gatsby](https://www.gatsbyjs.org/) has done for
+[React](https://reactjs.org/).
 
 ## Create an S3 Bucket
 
@@ -45,7 +46,8 @@ Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#
 
 ![Good bucket name](/images/blog/s3-static-pt1/good-bucket-name.png) 
 
-Once you have selected a name, choose a region and skip forward to the Set Permissions step.
+Once you have selected a name, choose a region and skip forward to the Set
+Permissions step.
 
 To host a static site that will be available to the world, we need to set public
 permissions. Uncheck the "Block *all* public access" checkbox.
@@ -58,8 +60,8 @@ Review your options in the last step, and create the bucket.
 
 Build your `elm-pages` project. 
 
-Find the bucket you created in the list of buckets, and upload all of the files from the `dist/`
-directory of your project.
+Find the bucket you created in the list of buckets, and upload all of the files
+from the `dist/` directory of your project.
 
 ![Set public access](/images/blog/s3-static-pt1/upload.png) 
 
@@ -68,8 +70,8 @@ directory of your project.
 
 Find the "Static website hosting" card in the Properties tab. 
 
-Select "Use this bucket to host a website" and enter `index.html` for the index and error
-documents.
+Select "Use this bucket to host a website" and enter `index.html` for the index
+and error documents.
 
 ![Set public access](/images/blog/s3-static-pt1/static-hosting.png) 
 
@@ -102,26 +104,26 @@ policy and replace `amazingdomain.com` with the name of your bucket.
 }
 ```
 
-This policy allows anyone to make a `GET` request for any object in the
-bucket.
+This policy allows anyone to make a `GET` request for any object in the bucket.
 
-Resource policies allow or deny a principal some action on a
-resource. The wildcard principal in our policy means anyone. The
-`s3:GetObject` action corresponds to a `GET` request on an S3 bucket. The wildcard 
-after the Amazon Resource Name (arn) means any object in the bucket. 
+Resource policies allow or deny a principal some action on a resource. The
+wildcard principal in our policy means anyone. The `s3:GetObject` action
+corresponds to a `GET` request on an S3 bucket. The wildcard after the Amazon
+Resource Name (arn) means any object in the bucket.
 
-The "Version" in the policy refers to the policy language version, 
-not the version of what you wrote in the policy. It needs to be there, and you can
-leave it as is.
+The "Version" in the policy refers to the policy language version, not the
+version of what you wrote in the policy. It needs to be there, and you can leave
+it as is.
 
 ## Visit your Blog
 
-Open the Static website hosting endpoint and your `elm-pages` blog 
-should be live!
+Open the Static website hosting endpoint and your `elm-pages` blog should be
+live!
 
 ## Next Time
 
 Thanks for reading! If you have any questions or corrections, please contact me
 `@bgins` on the Elm slack channel or `@bginsdev` on Twitter.
 
-In the next post, I will cover custom domains, certificates, and Cloudfront distributions.
+In the next post, I will cover custom domains, certificates, and Cloudfront
+distributions.

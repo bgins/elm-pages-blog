@@ -63,7 +63,7 @@ renderer =
                 , label =
                     Element.paragraph
                         [ Font.color Palette.color.primary
-                        , Element.htmlAttribute (Html.Attributes.attribute "id" "markdown-link")
+                        , Element.htmlAttribute (Html.Attributes.attribute "class" "markdown-link")
                         ]
                         body
                 }

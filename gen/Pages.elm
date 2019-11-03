@@ -140,6 +140,7 @@ images =
             }
         , s3StaticPt1 =
             { goodBucketName = (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+            , lighthouse = (buildImage [ "blog", "s3-static-pt1", "lighthouse.png" ])
             , publicAccess = (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
             , s3Static = (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
             , staticHosting = (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
@@ -164,6 +165,7 @@ allImages =
     , (buildImage [ "blog", "nginlog", "nginlog.png" ])
     , (buildImage [ "blog", "nginlog", "responsive.png" ])
     , (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "lighthouse.png" ])
     , (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
     , (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
     , (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
