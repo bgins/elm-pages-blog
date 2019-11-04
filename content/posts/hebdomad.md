@@ -12,7 +12,7 @@
 
 Hebdomad is a retunable keyboard with sound synthesis controls. It uses the Web Audio API and can be played in most web browsers.
 
-[Try Hebdomad here](https://brianginsburg.com/hebdomad/).
+[Try Hebdomad here](https://hebdomad.brianginsburg.com).
 
 I developed Hebdomad as an easy way to experiment with alternate tuning systems. The world of microtuning and xenharmonic music is intriguing to many musicians, but it can be challenging to get started. Hebdomad provides tuning presets for quick exploration and a custom panel for arbitrary retuning.
 

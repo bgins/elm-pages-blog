@@ -1,10 +1,10 @@
-# elm-pages-starter
+# elm-pages-blog
 
-This is my blog built with `elm-pages`. I used [elm-pages-starter](https://github.com/dillonkearns/elm-pages-starter) as a starting point.
+This is my blog built with `elm-pages`. It is lives at [brianginsburg.com](https://brianginsburg.com)
 
 Any parts of the `elm-pages-blog` may be used under a BSD-3 license with the exception of the text and images that make up my blog posts. Feel free to ask me if you would like to use that content. Most likely I will say yes.
 
-The setup instructions and links to documentation that follow are lightly adapted from the `elm-pages-starter` repository.
+I used [elm-pages-starter](https://github.com/dillonkearns/elm-pages-starter) as a starting point. The setup instructions and links to documentation that follow are lightly adapted from the `elm-pages-starter` repository.
 
 ## Setup Instructions
 git clone it:

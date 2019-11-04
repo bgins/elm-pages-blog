@@ -76,7 +76,10 @@ application config =
 allPages : List (PagePath PathKey)
 allPages =
     [ (buildPage [ "about" ])
+    , (buildPage [ "hebdomad" ])
     , (buildPage [  ])
+    , (buildPage [ "minima" ])
+    , (buildPage [ "moon-forge" ])
     , (buildPage [ "posts", "hebdomad" ])
     , (buildPage [ "posts" ])
     , (buildPage [ "posts", "mergesort" ])
@@ -84,12 +87,15 @@ allPages =
     , (buildPage [ "posts", "minima" ])
     , (buildPage [ "posts", "moonflask" ])
     , (buildPage [ "posts", "nginlog" ])
-    , (buildPage [ "posts", "two-years" ])
+    , (buildPage [ "posts", "s3-static-pt1" ])
     ]
 
 pages =
     { about = (buildPage [ "about" ])
+    , hebdomad = (buildPage [ "hebdomad" ])
     , index = (buildPage [  ])
+    , minima = (buildPage [ "minima" ])
+    , moonForge = (buildPage [ "moon-forge" ])
     , posts =
         { hebdomad = (buildPage [ "posts", "hebdomad" ])
         , index = (buildPage [ "posts" ])
@@ -98,7 +104,7 @@ pages =
         , minima = (buildPage [ "posts", "minima" ])
         , moonflask = (buildPage [ "posts", "moonflask" ])
         , nginlog = (buildPage [ "posts", "nginlog" ])
-        , twoYears = (buildPage [ "posts", "two-years" ])
+        , s3StaticPt1 = (buildPage [ "posts", "s3-static-pt1" ])
         , directory = directoryWithIndex ["posts"]
         }
     , directory = directoryWithIndex []
@@ -132,6 +138,15 @@ images =
             , responsive = (buildImage [ "blog", "nginlog", "responsive.png" ])
             , directory = directoryWithoutIndex ["blog", "nginlog"]
             }
+        , s3StaticPt1 =
+            { goodBucketName = (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+            , lighthouse = (buildImage [ "blog", "s3-static-pt1", "lighthouse.png" ])
+            , publicAccess = (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
+            , s3Static = (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
+            , staticHosting = (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
+            , upload = (buildImage [ "blog", "s3-static-pt1", "upload.png" ])
+            , directory = directoryWithoutIndex ["blog", "s3StaticPt1"]
+            }
         , directory = directoryWithoutIndex ["blog"]
         }
     , iconPng = (buildImage [ "icon-png.png" ])
@@ -149,6 +164,12 @@ allImages =
     , (buildImage [ "blog", "nginlog", "donuts.png" ])
     , (buildImage [ "blog", "nginlog", "nginlog.png" ])
     , (buildImage [ "blog", "nginlog", "responsive.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "good-bucket-name.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "lighthouse.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "public-access.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "s3-static.jpg" ])
+    , (buildImage [ "blog", "s3-static-pt1", "static-hosting.png" ])
+    , (buildImage [ "blog", "s3-static-pt1", "upload.png" ])
     , (buildImage [ "icon-png.png" ])
     , (buildImage [ "light-wool.png" ])
     ]
@@ -184,8 +205,26 @@ content =
     , extension = "md"
     } )
   ,
+  ( ["hebdomad"]
+    , { frontMatter = """{"type":"page","title":"Hebdomad has Moved"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
   ( []
     , { frontMatter = """{"title":"elm-pages blog","type":"blog-index"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["minima"]
+    , { frontMatter = """{"type":"page","title":"Minima has Moved"}
+""" , body = Nothing
+    , extension = "md"
+    } )
+  ,
+  ( ["moon-forge"]
+    , { frontMatter = """{"type":"page","title":"Moon Forge has Moved"}
 """ , body = Nothing
     , extension = "md"
     } )
@@ -209,7 +248,7 @@ content =
     } )
   ,
   ( ["posts", "minima-talk"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking on minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-09-30"}
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Speaking: On minima","description":"Preseting Minima at the Functional Programming Study Group","image":"/images/blog/minima/minima.png","draft":false,"published":"2017-09-30"}
 """ , body = Nothing
     , extension = "md"
     } )
@@ -232,8 +271,8 @@ content =
     , extension = "md"
     } )
   ,
-  ( ["posts", "two-years"]
-    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Two years in summary","description":"Much has happened over the last two years","image":"/images/icon-png.png","draft":true,"published":"2019-10-13"}
+  ( ["posts", "s3-static-pt1"]
+    , { frontMatter = """{"type":"blog","author":"Brian Ginsburg","title":"Deploying elm-pages as a S3 Static Site, Part I","description":"We deploy an elm-pages blog to an AWS S3 bucket.","image":"/images/blog/s3-static-pt1/s3-static.jpg","image-attribution":"maxizapata of pixabay","draft":false,"published":"2019-11-02"}
 """ , body = Nothing
     , extension = "md"
     } )
