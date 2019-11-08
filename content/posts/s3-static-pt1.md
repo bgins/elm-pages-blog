@@ -2,8 +2,8 @@
 {
   'type': 'blog',
   'author': 'Brian Ginsburg',
-  'title': 'Deploying elm-pages as a S3 Static Site, Part I',
-  'description': 'We deploy an elm-pages blog to an AWS S3 bucket.',
+  'title': 'Deploying elm-pages to S3 Static Hosting, Part I',
+  'description': "A tutorial on deploying elm-pages to AWS S3 static website hosting.",
   'image': '/images/blog/s3-static-pt1/s3-static.jpg',
   'image-attribution': 'maxizapata of pixabay',
   'draft': false,
@@ -12,10 +12,11 @@
 ---
 
 This post is the first in a series about deploying `elm-pages` applications to
-AWS S3. I plan to write three posts:
+AWS S3 static website hosting. I plan to write four posts:
 
-- Deploying an `elm-pages` blog with S3 static website hosting
+- Deploying an `elm-pages` blog to S3 static website hosting
 - Setting up a custom domain name and a Cloudfront distribution
+- Setting up CI/CD with CodePipeline
 - Doing it all with Cloudformation
 
 Most of the information in this series will apply to any static site, but I am
@@ -123,7 +124,7 @@ live!
 ## Next Time
 
 Thanks for reading! If you have any questions or corrections, please contact me
-`@bgins` on the Elm slack channel or `@bginsdev` on Twitter.
+@bgins on the Elm slack channel or [@bginsdev](https://twitter.com/bginsdev) on Twitter.
 
 In the next post, I will cover custom domains, certificates, and Cloudfront
 distributions.
