@@ -104,6 +104,19 @@ renderer =
                         |> Element.el [ Element.centerX ]
                 )
                 |> Markdown.Html.withAttribute "url"
+            , Markdown.Html.tag "CertificateRow"
+                (\children ->
+                    Element.row [ Element.paddingXY 15 0 ] (children |> List.reverse)
+                )
+            , Markdown.Html.tag "Link"
+                (\url children ->
+                    Element.newTabLink []
+                        { url = url
+                        , label =
+                            Element.column [] children
+                        }
+                )
+                |> Markdown.Html.withAttribute "url"
             ]
     }
 
