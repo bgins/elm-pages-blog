@@ -20,7 +20,7 @@ You can find me on the web at:
 - LinkedIn: [https://www.linkedin.com/in/brian-ginsburg](https://www.linkedin.com/in/brian-ginsburg)
 - Soundcloud: [https://soundcloud.com/thuselem](https://soundcloud.com/thuselem)
 
-I am a certified AWS Solutions Architect with the following certifications:
+I am a certified AWS Solutions Architect and Developer with the following certifications:
 
 <CertificateRow>
 <Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&amp;t=c&amp;d=2019-05-31&amp;ci=AWS00915243">
@@ -28,5 +28,8 @@ I am a certified AWS Solutions Architect with the following certifications:
 </Link>
 <Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=1&amp;t=c&amp;d=2019-07-12&amp;ci=AWS00915243">
 ![AWS Solutions Architect Associate Badge](/images/about/aws-solutions-architect-associate.png)
+</Link>
+<Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=2&amp;t=c&amp;d=2019-12-06&amp;ci=AWS00915243">
+![AWS Developer Associate Badge](/images/about/aws-developer-associate.png)
 </Link>
 </CertificateRow>
