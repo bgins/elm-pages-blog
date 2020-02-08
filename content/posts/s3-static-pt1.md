@@ -123,8 +123,5 @@ live!
 
 ## Next Time
 
-Thanks for reading! If you have any questions or corrections, please contact me
-@bgins on the Elm slack channel or [@bginsdev](https://twitter.com/bginsdev) on Twitter.
-
 In the next post, I will cover custom domains, certificates, and Cloudfront
 distributions.

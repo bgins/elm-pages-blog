@@ -5,7 +5,7 @@
   'title': 'Speaking: On minima',
   'description': 'Preseting Minima at the Functional Programming Study Group',
   'image': '/images/blog/minima/minima.png',
-  'draft': false,
+  'draft': true,
   'published': '2017-09-30',
 }
 ---

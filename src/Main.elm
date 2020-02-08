@@ -7,23 +7,22 @@ import Element.Background
 import Element.Border
 import Element.Font as Font
 import Element.Region
+import Files.Feed as Feed
+import Files.Sitemap as Sitemap
 import Head
 import Head.Seo as Seo
 import Html exposing (Html)
-import Html.Attributes as Attr
 import Index
-import Json.Decode
-import Markdown
 import MarkdownRenderer exposing (..)
 import Metadata exposing (Metadata)
 import Pages exposing (images, pages)
-import Pages.Directory as Directory exposing (Directory)
 import Pages.Document
 import Pages.ImagePath as ImagePath exposing (ImagePath)
 import Pages.Manifest as Manifest
 import Pages.Manifest.Category
 import Pages.PagePath as PagePath exposing (PagePath)
 import Pages.Platform exposing (Page)
+import Pages.StaticHttp as StaticHttp
 import Palette
 
 
@@ -49,16 +48,37 @@ type alias Rendered =
 
 main : Pages.Platform.Program Model Msg Metadata Rendered
 main =
-    Pages.application
-        { init = init
+    Pages.Platform.application
+        { init = \_ -> init
         , view = view
         , update = update
         , subscriptions = subscriptions
         , documents = [ markdownDocument ]
-        , head = head
         , manifest = manifest
         , canonicalSiteUrl = canonicalSiteUrl
+        , onPageChange = \_ -> ()
+        , generateFiles = generateFiles
+        , internals = Pages.internals
         }
+
+
+generateFiles :
+    List
+        { path : PagePath Pages.PathKey
+        , frontmatter : Metadata
+        , body : String
+        }
+    ->
+        List
+            (Result String
+                { path : List String
+                , content : String
+                }
+            )
+generateFiles siteMetadata =
+    [ Feed.fileToGenerate { siteTagline = siteTagline, siteUrl = canonicalSiteUrl } siteMetadata |> Ok
+    , Sitemap.build { siteUrl = canonicalSiteUrl } siteMetadata |> Ok
+    ]
 
 
 markdownDocument : ( String, Pages.Document.DocumentHandler Metadata Rendered )
@@ -95,37 +115,57 @@ subscriptions _ =
     Sub.none
 
 
-view : Model -> List ( PagePath Pages.PathKey, Metadata ) -> Page Metadata Rendered Pages.PathKey -> { title : String, body : Html Msg }
-view model siteMetadata page =
-    let
-        { title, body } =
-            pageView model siteMetadata page
-    in
-    { title = title
-    , body =
-        body
-            |> Element.layout
-                [ Element.width Element.fill
-                , Element.height Element.fill
-                , Element.Background.color (Element.rgb255 255 254 254)
-                , Element.behindContent
-                    (Element.column
-                        [ Element.width Element.fill
-                        , Element.height Element.fill
-                        , Element.Background.tiled "/images/light-wool.png"
-                        ]
-                        []
-                    )
-                , Font.size 18
-                , Font.family [ Font.typeface "Lato" ]
-                , Font.color (Element.rgba255 0 0 0 0.8)
-                ]
-    }
+view :
+    List ( PagePath Pages.PathKey, Metadata )
+    ->
+        { path : PagePath Pages.PathKey
+        , frontmatter : Metadata
+        }
+    ->
+        StaticHttp.Request
+            { view : Model -> Rendered -> { title : String, body : Html Msg }
+            , head : List (Head.Tag Pages.PathKey)
+            }
+view siteMetadata page =
+    StaticHttp.succeed
+        { view =
+            \model viewForPage ->
+                let
+                    { title, body } =
+                        pageView model siteMetadata page viewForPage
+                in
+                { title = title
+                , body =
+                    body
+                        |> Element.layout
+                            [ Element.width Element.fill
+                            , Element.height Element.fill
+                            , Element.Background.color (Element.rgb255 255 254 254)
+                            , Element.behindContent
+                                (Element.column
+                                    [ Element.width Element.fill
+                                    , Element.height Element.fill
+                                    , Element.Background.tiled "/images/light-wool.png"
+                                    ]
+                                    []
+                                )
+                            , Font.size 18
+                            , Font.family [ Font.typeface "Lato" ]
+                            , Font.color (Element.rgba255 0 0 0 0.8)
+                            ]
+                }
+        , head = head page.frontmatter
+        }
 
 
-pageView : Model -> List ( PagePath Pages.PathKey, Metadata ) -> Page Metadata Rendered Pages.PathKey -> { title : String, body : Element Msg }
-pageView model siteMetadata page =
-    case page.metadata of
+pageView :
+    Model
+    -> List ( PagePath Pages.PathKey, Metadata )
+    -> { path : PagePath Pages.PathKey, frontmatter : Metadata }
+    -> Rendered
+    -> { title : String, body : Element Msg }
+pageView model siteMetadata page viewForPage =
+    case page.frontmatter of
         Metadata.Page metadata ->
             { title = metadata.title
             , body =
@@ -143,7 +183,7 @@ pageView model siteMetadata page =
                         [ Element.paragraph
                             []
                             [ Palette.heading 1 [ Element.text metadata.title ] ]
-                        , page.view
+                        , viewForPage
                         ]
                     ]
             }
@@ -174,7 +214,7 @@ pageView model siteMetadata page =
                                 , articleImageView metadata.image metadata.imageAttribution
                                 ]
                             ]
-                            :: [ page.view ]
+                            :: [ viewForPage ]
                         )
                     ]
             }
@@ -196,7 +236,7 @@ pageView model siteMetadata page =
                         [ Element.paragraph
                             []
                             [ Palette.heading 1 [ Element.text profile.title ] ]
-                        , page.view
+                        , viewForPage
                         ]
                     ]
             }
@@ -378,7 +418,7 @@ head metadata =
 
 canonicalSiteUrl : String
 canonicalSiteUrl =
-    "https://brianginsburg.com/"
+    "https://brianginsburg.com"
 
 
 siteTagline : String

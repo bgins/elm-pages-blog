@@ -16,7 +16,6 @@ I am interested in the web, audio programming, functional programming, and cloud
 You can find me on the web at:
 
 - Github: [https://github.com/bgins](https://github.com/bgins)
-- Twitter: [https://twitter.com/bginsdev](https://twitter.com/bginsdev)
 - LinkedIn: [https://www.linkedin.com/in/brian-ginsburg](https://www.linkedin.com/in/brian-ginsburg)
 - Soundcloud: [https://soundcloud.com/thuselem](https://soundcloud.com/thuselem)
 
