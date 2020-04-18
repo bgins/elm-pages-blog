@@ -4,22 +4,13 @@
   'title': 'About',
   'name': 'Brian Ginsburg',
   'avatar': '/images/author/bg.png',
-  'bio': 'Brian Ginsburg is a Software Developer and Instructor at Kinetic Technology Solutions.'
+  'bio': 'Brian Ginsburg is a freelance software developer.'
 }
 ---
 
-Hello, my name is Brian Ginsburg. I am a Software Developer and Instructor at [Kinetic Technology Solutions](https://www.kinetictechsolutions.com/).
-I have my master's degree in Computer Science from Portland State University.
+Hello, my name is Brian Ginsburg. I am a freelance software developer. My areas of expertise include web development, blockchain development, and cloud infrastructure.
 
-I am interested in the web, audio programming, functional programming, and cloud infrastructure.
-
-You can find me on the web at:
-
-- Github: [https://github.com/bgins](https://github.com/bgins)
-- LinkedIn: [https://www.linkedin.com/in/brian-ginsburg](https://www.linkedin.com/in/brian-ginsburg)
-- Soundcloud: [https://soundcloud.com/thuselem](https://soundcloud.com/thuselem)
-
-I am a certified AWS Solutions Architect and Developer with the following certifications:
+I have a master's degree in Computer Science, and I am a certified AWS Solutions Architect and Developer with the following certifications:
 
 <CertificateRow>
 <Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&amp;t=c&amp;d=2019-05-31&amp;ci=AWS00915243">
@@ -32,3 +23,9 @@ I am a certified AWS Solutions Architect and Developer with the following certif
 ![AWS Developer Associate Badge](/images/about/aws-developer-associate.png)
 </Link>
 </CertificateRow>
+
+Please contact me on LinkedIn if you would like to discuss a project or learn more about the services that I offer.
+
+- LinkedIn: [https://www.linkedin.com/in/brian-ginsburg](https://www.linkedin.com/in/brian-ginsburg)
+- Github: [https://github.com/bgins](https://github.com/bgins)
+
