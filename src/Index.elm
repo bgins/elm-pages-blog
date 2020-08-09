@@ -2,13 +2,11 @@ module Index exposing (view)
 
 import Date
 import Element exposing (Element)
-import Element.Background
 import Element.Border
 import Element.Font as Font
 import Metadata exposing (Metadata)
 import Pages
 import Pages.PagePath as PagePath exposing (PagePath)
-import Pages.Platform exposing (Page)
 import Palette
 
 

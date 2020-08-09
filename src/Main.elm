@@ -14,7 +14,7 @@ import Head.Seo as Seo
 import Html exposing (Html)
 import Index
 import Json.Decode
-import MarkdownRenderer exposing (..)
+import MarkdownRenderer exposing (view)
 import Metadata exposing (Metadata)
 import Pages exposing (images, pages)
 import Pages.ImagePath as ImagePath exposing (ImagePath)
@@ -205,11 +205,10 @@ pageView model siteMetadata page viewForPage =
                         , Element.width (Element.fill |> Element.maximum 800)
                         , Element.height Element.fill
                         , Element.paddingXY 30 40
-                        , Element.spacing 20
                         , Element.centerX
                         , Element.Background.color Palette.color.white
                         ]
-                        (Element.column []
+                        [ Element.column [ Element.spacing 20 ]
                             [ Element.column
                                 [ Element.spacing 25
                                 ]
@@ -220,9 +219,9 @@ pageView model siteMetadata page viewForPage =
                                     ]
                                 , articleImageView metadata.image metadata.imageAttribution
                                 ]
+                            , viewForPage
                             ]
-                            :: [ viewForPage ]
-                        )
+                        ]
                     ]
             }
 

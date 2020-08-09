@@ -1,4 +1,4 @@
-module Files.Sitemap exposing (..)
+module Files.Sitemap exposing (build)
 
 import Metadata exposing (Metadata(..))
 import Pages
