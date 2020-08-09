@@ -2,8 +2,6 @@ module Metadata exposing (ArticleMetadata, Metadata(..), PageMetadata, decoder)
 
 import Data.Author
 import Date exposing (Date)
-import Dict exposing (Dict)
-import Element exposing (Element)
 import Json.Decode as Decode exposing (Decoder)
 import List.Extra
 import Pages

@@ -1,19 +1,14 @@
 module MarkdownRenderer exposing (view)
 
 import Element exposing (Element)
-import Element.Background
-import Element.Border
 import Element.Font as Font
 import Element.Region
-import Html exposing (Attribute, Html)
+import Html exposing (Attribute)
 import Html.Attributes exposing (property)
-import Html.Events exposing (on)
-import Json.Encode as Encode exposing (Value)
-import Markdown.Block
+import Json.Encode as Encode
 import Markdown.Html
 import Markdown.Parser
 import Oembed
-import Pages
 import Palette
 
 
