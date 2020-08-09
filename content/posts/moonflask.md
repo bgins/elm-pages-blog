@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Moon Flask',
   'description': 'Moon Flask was my first web project',
-  'image': '/images/blog/moonflask/moonflask.jpg',
+  'image': 'images/blog/moonflask/moonflask.jpg',
   'draft': false,
   'published': '2015-12-19',
 }

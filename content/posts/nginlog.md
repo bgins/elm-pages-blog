@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'nginlog',
   'description': 'nginlog is an nginx traffic analysis tool',
-  'image': '/images/blog/nginlog/nginlog.png',
+  'image': 'images/blog/nginlog/nginlog.png',
   'draft': false,
   'published': '2017-09-09',
 }
