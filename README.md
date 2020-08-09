@@ -1,6 +1,6 @@
 # elm-pages-blog
 
-This is my blog built with `elm-pages`. It is lives at [brianginsburg.com](https://brianginsburg.com)
+This is my blog built with `elm-pages`. The site is live at [brianginsburg.com](https://brianginsburg.com)
 
 Any parts of the `elm-pages-blog` may be used under a BSD-3 license with the exception of the text and images that make up my blog posts. Feel free to ask me if you would like to use that content. Most likely I will say yes.
 
