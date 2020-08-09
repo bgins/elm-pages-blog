@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Haskell Merge Sort',
   'description': 'Haskell merge sort is fun and easy',
-  'image': '/images/blog/mergesort/mergesort.jpg',
+  'image': 'images/blog/mergesort/mergesort.jpg',
   'image-attribution': 'Kelsie DiPerna',
   'draft': false,
   'published': '2017-09-11',

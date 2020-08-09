@@ -4,7 +4,7 @@
   'author': 'Brian Ginsburg',
   'title': 'Deploying elm-pages to S3 Static Hosting, Part I',
   'description': "A tutorial on deploying elm-pages to AWS S3 static website hosting.",
-  'image': '/images/blog/s3-static-pt1/s3-static.jpg',
+  'image': 'images/blog/s3-static-pt1/s3-static.jpg',
   'image-attribution': 'maxizapata of pixabay',
   'draft': false,
   'published': '2019-11-02',

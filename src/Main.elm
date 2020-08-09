@@ -13,15 +13,15 @@ import Head
 import Head.Seo as Seo
 import Html exposing (Html)
 import Index
+import Json.Decode
 import MarkdownRenderer exposing (..)
 import Metadata exposing (Metadata)
 import Pages exposing (images, pages)
-import Pages.Document
 import Pages.ImagePath as ImagePath exposing (ImagePath)
 import Pages.Manifest as Manifest
 import Pages.Manifest.Category
 import Pages.PagePath as PagePath exposing (PagePath)
-import Pages.Platform exposing (Page)
+import Pages.Platform
 import Pages.StaticHttp as StaticHttp
 import Palette
 
@@ -48,18 +48,19 @@ type alias Rendered =
 
 main : Pages.Platform.Program Model Msg Metadata Rendered
 main =
-    Pages.Platform.application
+    Pages.Platform.init
         { init = \_ -> init
         , view = view
         , update = update
         , subscriptions = subscriptions
         , documents = [ markdownDocument ]
+        , onPageChange = Nothing
         , manifest = manifest
         , canonicalSiteUrl = canonicalSiteUrl
-        , onPageChange = \_ -> ()
-        , generateFiles = generateFiles
         , internals = Pages.internals
         }
+        |> Pages.Platform.withFileGenerator generateFiles
+        |> Pages.Platform.toProgram
 
 
 generateFiles :
@@ -69,25 +70,31 @@ generateFiles :
         , body : String
         }
     ->
-        List
-            (Result String
-                { path : List String
-                , content : String
-                }
+        StaticHttp.Request
+            (List
+                (Result String
+                    { path : List String
+                    , content : String
+                    }
+                )
             )
 generateFiles siteMetadata =
-    [ Feed.fileToGenerate { siteTagline = siteTagline, siteUrl = canonicalSiteUrl } siteMetadata |> Ok
-    , Sitemap.build { siteUrl = canonicalSiteUrl } siteMetadata |> Ok
-    ]
+    StaticHttp.succeed
+        [ Feed.fileToGenerate { siteTagline = siteTagline, siteUrl = canonicalSiteUrl } siteMetadata |> Ok
+        , Sitemap.build { siteUrl = canonicalSiteUrl } siteMetadata |> Ok
+        ]
 
 
-markdownDocument : ( String, Pages.Document.DocumentHandler Metadata Rendered )
+markdownDocument :
+    { extension : String
+    , metadata : Json.Decode.Decoder Metadata
+    , body : String -> Result String (Element msg)
+    }
 markdownDocument =
-    Pages.Document.parser
-        { extension = "md"
-        , metadata = Metadata.decoder
-        , body = MarkdownRenderer.view
-        }
+    { extension = "md"
+    , metadata = Metadata.decoder
+    , body = MarkdownRenderer.view
+    }
 
 
 type alias Model =
