@@ -3,7 +3,7 @@
   'type': 'profile',
   'title': 'About',
   'name': 'Brian Ginsburg',
-  'avatar': '/images/author/bg.png',
+  'avatar': 'images/author/bg.png',
   'bio': 'Brian Ginsburg is a freelance software developer.'
 }
 ---
