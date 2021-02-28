@@ -60,3 +60,5 @@ Scale Workshop might be a bit overwhelming for beginners and Leimma is a better 
 Now is a better time than any to get started with microtuning! The tools on the web make exploration and learning far more accessible than it has ever been.
 
 Look forward to more posts from me exploring music and microtuning. Most likely, I will write about consonance and dissonance next.
+
+*Thanks to [Rosano](https://rosano.ca/) for giving me feedback on an early version of this post.*
