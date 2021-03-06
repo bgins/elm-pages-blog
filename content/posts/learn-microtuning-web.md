@@ -30,7 +30,11 @@ Moon Forge gives you a simple way to explore EDO tunings, but there is a whole u
 
 [Leimma and Apotome](https://isartum.net/) are a pair of apps recently released by [Khyam Allami](https://khyamallami.com/) and [Counterpoint](https://ctpt.co/).
 
-[Leimma](https://isartum.net/leimma) is the best web app I have seen to date for exploring tunings. Creating tunings and playing with them is simple and intuitive. The steps are: 1) Choose a base frequency, 2) Determine intervals, and 3) Map tones to your MIDI or QWERTY keyboard and choose a solmization (like Do-Re-Mi or Sa-Re-Ga).
+[Leimma](https://isartum.net/leimma) is the best web app I have seen to date for exploring tunings. Creating tunings and playing with them is simple and intuitive. The steps are:
+
+1. Choose a base frequency 
+2. Determine intervals
+3. Map tones to your MIDI or QWERTY keyboard and choose a solmization (like Do-Re-Mi or Sa-Re-Ga).
 
 As an example, here is what a [tuning for Rag Todi](https://isartum.net/leimma/new/refpitch/60/tuningsystem/1r1_1r1s1r1_256r243s1r1_32r27s1r1_45r32s1r1_3r2s1r1_128r81s1r1_15r8/scale/new/english/0~0~0~ts1~0~3~1s2~0~6~1s3~0~7~1s4~0~10~1s5~0~13~1s6~0~16~1) looks like in Leimma.
 
