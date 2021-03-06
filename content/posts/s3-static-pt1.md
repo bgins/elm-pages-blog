@@ -42,8 +42,7 @@ In the AWS management console, find the S3 service and create a bucket.
 
 Pick out a bucket name. S3 buckets exist in a global namespace, and you might
 need to get creative with your naming. Bucket names must conform to the format
-described in [Rules for Bucket
-Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules).
+described in [Rules for Bucket Naming](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules).
 
 ![Good bucket name](/images/blog/s3-static-pt1/good-bucket-name.png) 
 

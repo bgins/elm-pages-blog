@@ -1,13 +1,17 @@
 module MarkdownRenderer exposing (view)
 
-import Element exposing (Element)
+import Element exposing (..)
+import Element.Background as Background
+import Element.Border as Border
 import Element.Font as Font
-import Element.Region
-import Html exposing (Attribute)
-import Html.Attributes exposing (property)
+import Element.Region as Region
+import Html
+import Html.Attributes
 import Json.Encode as Encode
+import Markdown.Block exposing (HeadingLevel(..))
 import Markdown.Html
 import Markdown.Parser
+import Markdown.Renderer
 import Oembed
 import Palette
 
@@ -19,7 +23,7 @@ view markdown =
             |> Markdown.Parser.parse
     of
         Ok okAst ->
-            case Markdown.Parser.render renderer okAst of
+            case Markdown.Renderer.render renderer okAst of
                 Ok rendered ->
                     Element.column
                         [ Element.spacing 20
@@ -35,84 +39,128 @@ view markdown =
             Err (error |> List.map Markdown.Parser.deadEndToString |> String.join "\n")
 
 
-renderer : Markdown.Parser.Renderer (Element msg)
+renderer : Markdown.Renderer.Renderer (Element msg)
 renderer =
     { heading = heading
-    , raw =
-        Element.paragraph
-            []
-    , thematicBreak = Element.none
-    , plain = Element.text
-    , bold = \content -> Element.el [ Font.bold ] (Element.text content)
-    , italic = \content -> Element.el [ Font.italic ] (Element.text content)
-    , code = code
+    , paragraph = paragraph []
+    , hardLineBreak = html <| Html.br [] []
+    , blockQuote =
+        paragraph
+            [ Border.widthEach { top = 0, right = 0, bottom = 0, left = 4 }
+            , padding 10
+            , Border.color Palette.color.primary
+            , Background.color (rgb255 251 249 249)
+            ]
+    , strong =
+        \children ->
+            paragraph
+                [ Font.bold
+                , htmlAttribute
+                    (Html.Attributes.style "display" "inline-block")
+                ]
+                children
+    , emphasis =
+        \children ->
+            paragraph
+                [ Font.italic
+                , htmlAttribute
+                    (Html.Attributes.style "display" "inline-block")
+                ]
+                children
+    , strikethrough =
+        \children ->
+            paragraph
+                [ Font.strike
+                , htmlAttribute
+                    (Html.Attributes.style "display" "inline-block")
+                ]
+                children
+    , codeSpan = codeSpan
     , link =
-        \link body ->
-            -- Pages.isValidRoute link.destination
-            --     |> Result.map
-            --         (\() ->
-            Element.newTabLink
-                [ Element.htmlAttribute (Html.Attributes.style "display" "inline-flex")
+        \link content ->
+            newTabLink
+                [ htmlAttribute (Html.Attributes.style "display" "inline-flex")
                 ]
                 { url = link.destination
                 , label =
-                    Element.paragraph
+                    paragraph
                         [ Font.color Palette.color.primary
-                        , Element.htmlAttribute (Html.Attributes.attribute "class" "markdown-link")
+                        , htmlAttribute (Html.Attributes.attribute "class" "markdown-link")
                         ]
-                        body
+                        content
                 }
-                |> Ok
-
-    -- )
     , image =
-        \image body ->
-            -- Pages.isValidRoute image.src
-            --     |> Result.map
-            -- (\() ->
-            Element.image [ Element.width Element.fill ] { src = image.src, description = body }
-                |> Ok
-
-    -- )
-    , list =
+        \imageInfo ->
+            image [ width fill ] { src = imageInfo.src, description = imageInfo.alt }
+    , text = text
+    , unorderedList =
         \items ->
-            Element.column [ Element.spacing 10 ]
+            column [ spacing 10 ]
                 (items
                     |> List.map
-                        (\itemBlocks ->
-                            Element.row [ Element.spacing 7, Element.paddingXY 15 0 ]
-                                [ Element.el
-                                    [ Element.alignTop ]
-                                    (Element.text "•")
-                                , itemBlocks
+                        (\item ->
+                            case item of
+                                Markdown.Block.ListItem task children ->
+                                    row [ spacing 7, paddingXY 15 0 ]
+                                        [ el
+                                            [ alignTop ]
+                                            (text "•")
+                                        , paragraph [] children
+                                        ]
+                        )
+                )
+    , orderedList =
+        \startingIndex items ->
+            column [ spacing 10 ]
+                (items
+                    |> List.indexedMap
+                        (\index children ->
+                            row [ spacing 7, paddingXY 15 0 ]
+                                [ el [ alignTop ]
+                                    (text (String.fromInt (index + startingIndex) ++ "."))
+                                , paragraph [] children
                                 ]
                         )
                 )
-    , codeBlock = codeBlock
     , html =
         Markdown.Html.oneOf
-            [ Markdown.Html.tag "Oembed"
+            [ Markdown.Html.tag "oembed"
                 (\url children ->
                     Oembed.view [] Nothing url
-                        |> Maybe.map Element.html
-                        |> Maybe.withDefault Element.none
-                        |> Element.el [ Element.centerX ]
+                        |> Maybe.map html
+                        |> Maybe.withDefault none
+                        |> el [ centerX ]
                 )
                 |> Markdown.Html.withAttribute "url"
-            , Markdown.Html.tag "CertificateRow"
+            , Markdown.Html.tag "certificate-row"
                 (\children ->
-                    Element.row [ Element.paddingXY 15 0 ] (children |> List.reverse)
+                    row [ paddingXY 15 0 ] (children |> List.reverse)
                 )
-            , Markdown.Html.tag "Link"
+            , Markdown.Html.tag "link"
                 (\url children ->
-                    Element.newTabLink []
+                    newTabLink []
                         { url = url
                         , label =
-                            Element.column [] children
+                            column [] children
                         }
                 )
                 |> Markdown.Html.withAttribute "url"
             ]
+    , codeBlock = codeBlock
+    , thematicBreak =
+        paragraph
+            [ width fill, paddingXY 0 20 ]
+            [ html <|
+                Html.hr
+                    [ Html.Attributes.style "border-top" "1px solid #d1c7c7" ]
+                    []
+            ]
+    , table = paragraph []
+    , tableHeader = paragraph []
+    , tableBody = paragraph []
+    , tableRow = paragraph []
+    , tableHeaderCell = \maybeAlignment attrs -> none
+    , tableCell = \maybeAlignment attrs -> none
     }
 
 
@@ -122,15 +170,15 @@ rawTextToId rawText =
         |> String.replace " " ""
 
 
-heading : { level : Int, rawText : String, children : List (Element msg) } -> Element msg
+heading : { level : HeadingLevel, rawText : String, children : List (Element msg) } -> Element msg
 heading { level, rawText, children } =
-    Element.paragraph
-        [ Element.Region.heading level
-        , Element.htmlAttribute
+    paragraph
+        [ Region.heading (Markdown.Block.headingLevelToInt level)
+        , htmlAttribute
             (Html.Attributes.attribute "name" (rawTextToId rawText))
-        , Element.htmlAttribute
+        , htmlAttribute
             (Html.Attributes.id (rawTextToId rawText))
-        , Element.paddingEach
+        , paddingEach
             { top = 10
             , right = 0
             , bottom = 0
@@ -138,11 +186,14 @@ heading { level, rawText, children } =
             }
         , Font.size
             (case level of
-                1 ->
+                H1 ->
                     36
 
-                2 ->
+                H2 ->
                     28
+
+                H3 ->
+                    24
 
                 _ ->
                     18
@@ -153,13 +204,15 @@ heading { level, rawText, children } =
         children
 
 
-code : String -> Element msg
-code snippet =
-    Element.el
-        [ Font.family [ Font.typeface "Cousine" ]
+codeSpan : String -> Element msg
+codeSpan snippet =
+    el
+        [ padding 3
+        , Font.family [ Font.typeface "Cousine" ]
         , Font.size 18
+        , Background.color (rgb255 251 249 249)
         ]
-        (Element.text snippet)
+        (text snippet)
 
 
 codeBlock : { body : String, language : Maybe String } -> Element msg
@@ -171,23 +224,23 @@ codeBlock details =
         , Html.Attributes.style "white-space" "normal"
         ]
         []
-        |> Element.html
-        |> Element.el
-            [ Element.width Element.fill
+        |> html
+        |> el
+            [ width fill
             ]
 
 
-editorValue : String -> Attribute msg
+editorValue : String -> Html.Attribute msg
 editorValue value =
     value
         |> String.trim
         |> Encode.string
-        |> property "editorValue"
+        |> Html.Attributes.property "editorValue"
 
 
-editorLanguage : String -> Attribute msg
+editorLanguage : String -> Html.Attribute msg
 editorLanguage value =
     value
         |> String.trim
         |> Encode.string
-        |> property "editorLanguage"
+        |> Html.Attributes.property "editorLanguage"
