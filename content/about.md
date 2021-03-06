@@ -12,17 +12,17 @@ Hello, my name is Brian Ginsburg. I am a freelance software developer. My areas 
 
 I have a master's degree in Computer Science, and I am a certified AWS Solutions Architect and Developer with the following certifications:
 
-<CertificateRow>
-<Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&amp;t=c&amp;d=2019-05-31&amp;ci=AWS00915243">
+<certificate-row>
+<link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=9&amp;t=c&amp;d=2019-05-31&amp;ci=AWS00915243">
 ![AWS Cloud Practitioner Badge](/images/about/aws-cloud-practitioner.png)
-</Link>
-<Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=1&amp;t=c&amp;d=2019-07-12&amp;ci=AWS00915243">
+</link>
+<link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=1&amp;t=c&amp;d=2019-07-12&amp;ci=AWS00915243">
 ![AWS Solutions Architect Associate Badge](/images/about/aws-solutions-architect-associate.png)
-</Link>
-<Link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=2&amp;t=c&amp;d=2019-12-06&amp;ci=AWS00915243">
+</link>
+<link url="https://www.certmetrics.com/amazon/public/badge.aspx?i=2&amp;t=c&amp;d=2019-12-06&amp;ci=AWS00915243">
 ![AWS Developer Associate Badge](/images/about/aws-developer-associate.png)
-</Link>
-</CertificateRow>
+</link>
+</certificate-row>
 
 Please contact me on LinkedIn if you would like to discuss a project or learn more about the services that I offer.
 
