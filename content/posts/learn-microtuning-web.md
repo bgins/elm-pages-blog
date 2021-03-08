@@ -10,7 +10,7 @@
 }
 ---
 
-In recent years, it has become easier and easier to learn microtuning. New apps and tools on the web make microtuning immediately accessible without installing any software. This post covers a few of those tools from the perspective of what you can do with them and how will they help you learn.
+In recent years, it has become easier and easier to learn microtuning. New apps and tools on the web make microtuning immediately accessible without installing any software. This post covers a few of those tools from the perspective of what you can do with them and how they will help you learn.
 
 I will focus on tools that let you experiment right away. There are fantastic resources on the web for learning theory, such as the [Xenharmonic Wiki](https://en.xen.wiki/). But if you are new to microtuning, I think you will learn more by hearing scales and making music.
 
@@ -20,17 +20,17 @@ I will focus on tools that let you experiment right away. There are fantastic re
 
 ![Moon Forge Main Control Panel](/images/blog/learn-microtuning-web/moon-forge-controls.png)
 
-What is EDO? EDO stands for equal divisions of the octave. 12-EDO is another name for 12-tone equal temperament. EDO is the preferred terminology among many theorists because it more simply describes what the tuning is. 
+What is EDO? EDO stands for equal divisions of the octave. 12-EDO is another name for 12-tone equal temperament. EDO is the preferred terminology among many theorists because it more simply describes what a tuning is.
 
 In Moon Forge, you can set an arbitrary number of divisions of the octave by changing EDO. You can also set a base frequency and the MIDI note at that frequency to move a tuning up or down on your controller.
 
-Moon Forge gives you a simple way to explore EDO tunings, but there is a whole universe of tunings out there so lets move on!
+Moon Forge gives you a simple way to explore EDO tunings, but there is a whole universe of tunings out there, so let's move on!
 
 ## Leimma and Apotome
 
 [Leimma and Apotome](https://isartum.net/) are a pair of apps recently released by [Khyam Allami](https://khyamallami.com/) and [Counterpoint](https://ctpt.co/).
 
-[Leimma](https://isartum.net/leimma) is the best web app I have seen to date for exploring tunings. Creating tunings and playing with them is simple and intuitive. The steps are:
+[Leimma](https://isartum.net/leimma) is the best web app I have seen to explore tunings. Creating tunings and playing with them is simple and intuitive. The steps are:
 
 1. Choose a base frequency 
 2. Determine intervals
@@ -42,8 +42,7 @@ As an example, here is what a [tuning for Rag Todi](https://isartum.net/leimma/n
 
 The tuning is mapped on a circle repeating at the octave. You can map tones to keys on your keyboard to play with the tuning and listen to how it sounds.
 
-Leimma is my top recommendation if you are new to microtuning.
-The app is gorgeous and makes it super easy to see and hear what is going on in a tuning. I'd recommend watching the short [Leimma tutorial](https://vimeo.com/503475532) to get oriented before you start.
+Leimma is my top recommendation if you are new to microtuning. The app is gorgeous and makes it super easy to see and hear what is going on in a tuning. I'd recommend watching the short [Leimma tutorial](https://vimeo.com/503475532) to get oriented before you start.
 
 [Apotome](https://isartum.net/apotome) is a companion app to Leimma where you can use your tunings to make generative music. Working with microtunings means exploring new tonal spaces, and Apotome is a great way to explore quickly! You can get a sense for a tuning and take that with you when you go to write music.
 
@@ -57,11 +56,11 @@ Here is the same tuning for [Rag Todi in Scale Workshop](https://sevish.com/scal
 
 ![Rag Todi](/images/blog/learn-microtuning-web/rag-todi-scale-workshop.png)
 
-Scale Workshop might be a bit overwhelming for beginners and Leimma is a better place to start. But if you already have a general sense for microtuning, Scale Workshop is a powerful tool for making and analyzing tunings.
+Scale Workshop might be a bit overwhelming for beginners, and Leimma is a better place to start. But if you already have a general sense for microtuning, Scale Workshop is a powerful tool for making and analyzing tunings.
 
 ## Go Forth and Explore
 
-Now is a better time than any to get started with microtuning! The tools on the web make exploration and learning far more accessible than it has ever been.
+Now is a better time than any to get started with microtuning! Web tools make exploration and learning far more accessible than it has ever been.
 
 Look forward to more posts from me exploring music and microtuning. Most likely, I will write about consonance and dissonance next.
 
