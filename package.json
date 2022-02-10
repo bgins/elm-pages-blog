@@ -10,7 +10,7 @@
   "author": "Brian Ginsburg",
   "license": "BSD-3",
   "dependencies": {
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.23.0",
     "puppeteer": "^2.1.0",
     "sharp": "^0.24.0"
