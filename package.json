@@ -13,7 +13,7 @@
     "node-sass": "^4.14.1",
     "prismjs": "^1.23.0",
     "puppeteer": "^2.1.0",
-    "sharp": "^0.24.0"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "elm": "^0.19.1-3",
